@@ -1,11 +1,16 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import service.Service;
+import dao.*;
+import entity.*;
 
 @WebServlet("/SigninServlet")
 public class SigninServlet extends HttpServlet {
@@ -19,11 +24,24 @@ public class SigninServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String inputEmail = request.getParameter("InputEmail1");
-		String password = request.getParameter("InputPassword1");
-		String check = request.getParameter("checkbox1");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		
-		response.getWriter().write(inputEmail+ " " + password + " " + check + " something");
+		Service serv = new Service();
+		Boolean match = serv.userLogin(email, password);
+		
+		if(match){
+			UserDao udao = new UserDao();
+			User loginedUser = udao.findUserByPk(email);
+			request.getSession().setAttribute("user", loginedUser);
+			request.getRequestDispatcher("userIndex.jsp").forward(request, response);
+			
+		}else{
+			request.getRequestDispatcher("loginFail.jsp").forward(request, response);
+			
+		}
+			
+		
 	}
 
 }

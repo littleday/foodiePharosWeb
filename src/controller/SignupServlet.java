@@ -34,13 +34,13 @@ public class SignupServlet extends HttpServlet {
 		// Register failed
 		if(user == null){
 			//response.getWriter().write("<script>alert(\"Register failed!\");</script>");
-			request.getRequestDispatcher("RegisterFail.jsp").forward(request, response);
+			request.getRequestDispatcher("registerFail.jsp").forward(request, response);
+		}else{
+		
+			//after register, jump back to home page
+			request.getSession().setAttribute("user", user);
+			request.getRequestDispatcher("userIndex.jsp").forward(request, response);
 		}
-		
-		//after register, jump back to home page
-		request.getSession().setAttribute("user", user);
-		request.getRequestDispatcher("userIndex.jsp").forward(request, response);
-		
 	}
 
 }

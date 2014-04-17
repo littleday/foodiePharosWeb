@@ -55,15 +55,15 @@
 		                            <form class="form" role="form" method="post" action="SigninServlet" accept-charset="UTF-8" id="login_nav">
 		                                <div class="form-group">
 		                                    <label class="sr-only" for="InputEmail1">Email address</label>
-		                                    <input type="email" class="form-control" id="InputEmail1" placeholder="Email address" required>
+		                                    <input type="email" class="form-control" id="InputEmail1" name="email" placeholder="Email address" required>
 		                                </div>
 	                                    <div class="form-group">
 	                                        <label class="sr-only" for="InputPassword1">Password</label>
-	                                        <input type="password" class="form-control" id="InputPassword1" placeholder="Password" required>
+	                                        <input type="password" class="form-control" id="InputPassword1" name="password" placeholder="Password" required>
 	                                    </div>
 		                                <div class="form-group">                                    
 		                                    <label class="checkbox" for="checkbox1">
-		                                    <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">Remember me
+		                                    <input type="checkbox" value="" id="checkbox1" name="remember" data-toggle="checkbox">Remember me
 		                                    </label>
 		                                </div>
 		                                <div class="form-group">
