@@ -18,11 +18,12 @@ public class Test {
 	
 	public static void main(String[] args) throws Exception{
 
-		LocationDao dao = new LocationDao();
-		Location loc = dao.findLocationByPk("2", "1");
+		Location loc = new Location("city1", "zip1", "MA", "USA");
 		
-		RestaurantDao rdao = new RestaurantDao();
-		Restaurant rest = rdao.findRestaurantByBusinessId("rest1");
+		Restaurant rest = new Restaurant(null, 3, 100, "businessid");
+		
+		Service service = new Service();
+		service.addRestaurant(loc, rest);
 		
 		System.out.println(rest.getId());
 	}

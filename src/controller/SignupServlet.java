@@ -27,12 +27,20 @@ public class SignupServlet extends HttpServlet {
 		String email = request.getParameter("signup_email");
 		String password = request.getParameter("signup_pwd");
 		
-		// Use email as username/accountname
+		// Use email as username
 		Service serv = new Service();
 		User user = serv.userRegister(email, password, email, "", firstName, lastName, null);
 		
-		//after register, jump where?
-		response.getre
+		// Register failed
+		if(user == null){
+			//response.getWriter().write("<script>alert(\"Register failed!\");</script>");
+			request.getRequestDispatcher("RegisterFail.jsp").forward(request, response);
+		}
+		
+		//after register, jump back to home page
+		request.getSession().setAttribute("user", user);
+		request.getRequestDispatcher("userIndex.jsp").forward(request, response);
+		
 	}
 
 }
