@@ -100,7 +100,7 @@
 		
 		<div id="header">
 			<div class="container">
-				<form class="form-signup" role="form">
+				<form class="form-signup" role="form" action="signup">
 					<h1 class="form-signup-heading">Please sign up</h1>
 					<input id="first_name" name="first_name" class="form-control" placeholder="First Name" type="fname" required autofocus/>
 					<input id="last_name" name="last_name" class="form-control" placeholder="Last Name" type="lname" required/>
