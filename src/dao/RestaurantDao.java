@@ -4,6 +4,7 @@ package dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entity.*;
 
@@ -34,6 +35,20 @@ public class RestaurantDao {
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
 		rest = em.find(Restaurant.class, id);
+		em.getTransaction().commit();
+		em.close();
+		return rest;
+	}
+	
+	public Restaurant findRestaurantByBusinessId(String businessId){
+		Restaurant rest = null;
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		
+		Query query = em.createQuery("select r from Restaurant r where r.businessId = :busId")
+				.setParameter("busId", businessId);
+		rest = (Restaurant)query.getSingleResult();
+		
 		em.getTransaction().commit();
 		em.close();
 		return rest;

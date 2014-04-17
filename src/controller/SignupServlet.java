@@ -7,34 +7,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class SignupServlet
- */
+import entity.*;
+import service.Service;
+
 @WebServlet("/SignupServlet")
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public SignupServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.getWriter().write("Signup servlet being called in get() method");
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().write("Signup servlet being called");
+		
+		String firstName = request.getParameter("first_name");
+		String lastName = request.getParameter("last_name");
+		String email = request.getParameter("signup_email");
+		String password = request.getParameter("signup_pwd");
+		
+		// Use email as username/accountname
+		Service serv = new Service();
+		User user = serv.userRegister(email, password, email, "", firstName, lastName, null);
+		
+		//after register, jump where?
+		response.getre
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import dao.AdministratorDao;
+import dao.LocationDao;
 import dao.RecommendListDao;
 import dao.RestaurantDao;
 import dao.ReviewDao;
@@ -17,11 +18,12 @@ public class Test {
 	
 	public static void main(String[] args) throws Exception{
 
-		service.Service serv = new Service();
+		LocationDao dao = new LocationDao();
+		Location loc = dao.findLocationByPk("2", "1");
 		
-		serv.userRegister("anthony", "213", null, null, null, null, null);
+		RestaurantDao rdao = new RestaurantDao();
+		Restaurant rest = rdao.findRestaurantByBusinessId("rest1");
 		
-		
-		
+		System.out.println(rest.getId());
 	}
 }

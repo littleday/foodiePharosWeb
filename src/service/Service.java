@@ -286,6 +286,24 @@ public class Service {
 	public List<User> searchUserByDateRange(Date startDate, Date endDate){
 		return new UserDao().findUserRegisteredBetween(startDate, endDate);
 	}
+	
+	public Boolean addRestaurant(Location loc, Restaurant rest){
+		LocationDao dao = new LocationDao();
+		Location persistedLoc = dao.findLocationByPk(loc.getLocationPk().getCity(), loc.getLocationPk().getZipcode());
+		if(persistedLoc == null){
+			dao.createLocation(loc);
+			persistedLoc = loc;
+		}
+		
+		RestaurantDao rdao = new RestaurantDao();
+		Restaurant persistedRest = rdao.findRestaurantByBusinessId(rest.getBusinessId());
+		if(persistedRest == null){
+			rest.setLocation(persistedLoc);
+			rdao.createRestaurant(rest);
+		}
+		
+		return true;
+	}
  
 
 }
