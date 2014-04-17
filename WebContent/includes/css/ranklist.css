@@ -1,0 +1,44 @@
+.rank {
+	background-color: #34495E;
+	border-radius: 20px;
+	position: relative;
+	text-align: center;
+	margin-bottom: 20px;
+	/* [disabled]margin-top: 0px; */
+	padding-bottom: 14px;
+	padding-left: 14px;
+	padding-right: 14px;
+	padding-top: 14px;
+}
+.rank.rank-hot:before {
+  background: url(../images/rank/ribbon.png) 0 0 no-repeat;
+  background-size: 42px 42px;
+  content: '';
+  height: 80px;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  width: 42px;
+}
+.rank p {
+	font-size: 15px;
+	margin-bottom: 0px;
+}
+.rank-image {
+  height: 100px;
+  margin: 31px 0 27px;
+  vertical-align: bottom;
+}
+.rank-image.big-illustration {
+	height: 111px;
+	margin-top: 20px;
+	width: 112px;
+}
+.rank-title {
+  font-size: 20px;
+  margin: 0;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 2) {
+  .rank.rank-hot:before {
+    background-image: url(../images/rank/ribbon-2x.png);
+  }

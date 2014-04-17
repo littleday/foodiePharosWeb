@@ -1,0 +1,172 @@
+/* ==== Google font ==== */
+@import url('http://fonts.googleapis.com/css?family=Lato:400,300,700,900');
+
+body {
+	background-color: #FFFFCC;
+	background: url(../images/food.jpg) no-repeat center top;
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	color: #66FFCC;
+	line-height: 1.6em;
+	-webkit-font-smoothing: antialiased;
+	-webkit-overflow-scrolling: touch;
+	-webkit-background-size: 100%;
+	-moz-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+h3 {
+	font-weight: 400;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+
+a {
+	color: #1abc9c;
+	word-wrap: break-word;
+	-webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+	-o-transition: color 0.1s ease-in, background 0.1s ease-in;
+	transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+	color: #666666;
+	text-decoration: none;
+	outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #66FFCC;
+}
+
+.alignleft {
+    text-align: left;
+}
+.alignright {
+    text-align: right;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.btn-theme  {
+  color: #fff;
+  background-color: #6666CC;
+  border-color: #6666CC;
+}
+.btn-theme:hover  {
+  color: #fff;
+  background-color: #666699;
+  border-color: #6666CC;
+}
+form.search {
+	margin-top: 30px;
+}
+form.search button.btn {
+	text-transform: uppercase;
+	font-weight: 700;
+}
+form.search input.form-control:focus {
+	border-color: #666699;
+}
+
+/* Login */
+.login_nav input { 
+	margin-bottom: 15px; 
+}
+
+
+/* Nav */
+
+a.navbar-brand {
+	color: #fff !important;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+a.navbar-brand:hover {
+    color: #FFFFCC !important;
+}
+
+/* Header */
+
+#header {	
+	background-color: rgba( 249, 229, 205, 0.6);
+	margin-top: -20px;
+	padding-top: 150px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 650px;
+	width: 100%;
+	}
+
+
+
+#header h1 {
+	margin-top: 60px;
+	margin-bottom: 15px;
+	color: #6666cc;
+	font-size: 45px;
+	font-weight: 900;
+	letter-spacing: -1px;
+}
+
+h2.subtitle {
+	color: #6666cc;
+	font-size: 20px;
+}
+
+h4.brand {
+	color:#6666cc !important;
+}
+
+h3.title{
+    color:#6666cc !important;
+}
+
+/* footer */
+#footer {
+	background: #666699;
+	padding: 20px 0 5px;
+	margin-top: 0px;
+}
+
+p.copyright {
+	color: #fff;
+	text-align: center;
+}	
