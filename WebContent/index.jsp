@@ -52,7 +52,7 @@
 					    <ul class="dropdown-menu dropdown-inverse" style="padding: 15px;min-width: 250px;">
 		                    <div class="row">
 		                        <div class="col-md-12">
-		                            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login_nav">
+		                            <form class="form" role="form" method="post" action="SigninServlet" accept-charset="UTF-8" id="login_nav">
 		                                <div class="form-group">
 		                                    <label class="sr-only" for="InputEmail1">Email address</label>
 		                                    <input type="email" class="form-control" id="InputEmail1" placeholder="Email address" required>
