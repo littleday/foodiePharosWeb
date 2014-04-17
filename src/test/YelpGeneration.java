@@ -20,6 +20,8 @@ import service.Service;
  */
 public class YelpGeneration {
 	public static void main(String[] args) throws IOException{
+		Service service = new Service();
+		
 		String iniURL = "http://www.yelp.com/search?cflt=restaurants&find_loc=Boston%2C+MA%2C+USA"; // initial page
 		/* http://www.yelp.com/search?cflt=restaurants&find_loc=Boston%2C+MA%2C+USA#find_desc ->second page 
 		 * http://www.yelp.com/search?cflt=restaurants&find_loc=Boston%2C+MA%2C+USA&start=10
@@ -28,7 +30,7 @@ public class YelpGeneration {
 		String curURL = null;
 		Document doc = null;
 		/* The deep of pages: n */
-		for(int n = 0; n< 20; n++){
+		for(int n = 0; n< 423; n++){
 			if( n != 0)
 			{
 				curURL = iniURL + "&start="+ n*10;
@@ -92,7 +94,6 @@ public class YelpGeneration {
 					System.out.println(zipCode);
 					System.out.println("------------------------");
 					//Use service to add restaurants to database 
-					Service service = new Service();
 					Restaurant rest = new Restaurant();
 					rest.setBusinessId(businessId);
 					String[] category = new String[categories.size()];
