@@ -78,20 +78,20 @@ visibility:hidden;
                     <li><a href="${pageContext.request.contextPath}/myprofile.jsp">My Profile</a></li>
                     <li><a href="${pageContext.request.contextPath}/myloves.jsp">My Loves</a></li>
                     <li><a href="fakelink">My Settings</a></li>
-                    <li class="highlighted"><a href="fakelink">Logout</a></li>
+                    <li class="highlighted"><a href="${pageContext.request.contextPath}/SignoutServlet">Logout</a></li>
                     </ul>
                 </li>  
             </ul>
             
             
             <ul class="nav navbar-nav navbar-right <%=guestStyle %>">
-                <li><a href="signup.jsp">Sign up</a></li>
+                <li><a href="${pageContext.request.contextPath}/signup.jsp">Sign up</a></li>
 			    <li class="dropdown">
 			    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in<span class="caret"></span></a>
 				    <ul class="dropdown-menu dropdown-inverse" style="padding: 15px;min-width: 250px;">
 	                    <div class="row">
 	                        <div class="col-md-12">
-	                            <form class="form" role="form" method="post" action="SigninServlet" accept-charset="UTF-8" id="login_nav">
+	                            <form class="form" role="form" method="post" action="${pageContext.request.contextPath}/SigninServlet" accept-charset="UTF-8" id="login_nav">
 	                                <div class="form-group">
 	                                    <label class="sr-only" for="InputEmail1">Email address</label>
 	                                    <input type="email" class="form-control" id="InputEmail1" name="email" placeholder="Email address" required>

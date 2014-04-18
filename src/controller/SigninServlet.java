@@ -34,7 +34,7 @@ public class SigninServlet extends HttpServlet {
 			UserDao udao = new UserDao();
 			User loginedUser = udao.findUserByPk(email);
 			request.getSession().setAttribute("user", loginedUser);
-			request.getRequestDispatcher("userIndex.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			
 		}else{
 			request.getRequestDispatcher("loginFail.jsp").forward(request, response);

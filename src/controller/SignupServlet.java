@@ -39,7 +39,7 @@ public class SignupServlet extends HttpServlet {
 		
 			//after register, jump back to home page
 			request.getSession().setAttribute("user", user);
-			request.getRequestDispatcher("userIndex.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	}
 
