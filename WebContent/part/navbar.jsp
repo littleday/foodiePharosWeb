@@ -21,7 +21,10 @@ visibility:hidden;
 <%
 	String loginedStyle;
 	String guestStyle;
+	String placeholder = "My Profile";
+	
 	User loginUser = (User)request.getSession().getAttribute("user");
+	
 	
 	// guest user
 	if(loginUser == null){ 
@@ -31,6 +34,7 @@ visibility:hidden;
 	}else{
 		loginedStyle = "visable";
 		guestStyle = "hidden";
+		placeholder = loginUser.getFirstName();
 	}
 
 %>
@@ -73,7 +77,7 @@ visibility:hidden;
 
 
             <ul class="nav navbar-nav navbar-right <%=loginedStyle %> }">
-	            <li class="dropdown"><a href ="#" class ="dropdown-toggle" data-toggle="dropdown">My Profile<span class="caret"></span></a>
+	            <li class="dropdown"><a href ="#" class ="dropdown-toggle" data-toggle="dropdown"><%=placeholder %><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                     <li><a href="${pageContext.request.contextPath}/myprofile.jsp">My Profile</a></li>
                     <li><a href="${pageContext.request.contextPath}/myloves.jsp">My Loves</a></li>

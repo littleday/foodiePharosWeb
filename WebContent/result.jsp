@@ -84,6 +84,7 @@
                     var table = $("tbody");
                     var template = "<tr id='123'></tr>";
                     var td_img_str = "<td><img src='xxx.jgp' /></td>";
+                    var td_name_str = "<td><a href='www.123.com'></a></td>";
                     
                     for(var i = 0; i < businesses.length; ++i){
                     	var item = businesses[i];
@@ -96,7 +97,7 @@
                     	var address = item.location.address[0] + ", " + item.location.city;
                     	
                     	for(var j = 1; j < categoriesArray.length; ++j){
-                    		categoryString += ", " + categoriesArray[j][0]
+                    		categoryString += ", " + categoriesArray[j][0];
                     	}
                     	
                     	console.log([bizid, name, stars, categoryString, address]);
@@ -105,9 +106,12 @@
                     	tr.attr("id", bizid);
                     	var td_img = jQuery(td_img_str);
                     	td_img.find("img").attr("src", imgUrl);
+                    	var td_name = jQuery(td_name_str);
+                    	td_name.find("a").attr("href", "restaurant.jsp?id="+bizid);
+                    	td_name.find("a").append(name);
                     	
                     	tr.append(td_img);
-                    	tr.append("<td>"+ name +"</td>");
+                    	tr.append(td_name);
                     	tr.append("<td>"+ stars +"</td>");
                     	tr.append("<td>"+ categoryString +"</td>");
                     	tr.append("<td>"+ address +"</td>");

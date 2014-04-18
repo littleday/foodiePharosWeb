@@ -34,6 +34,7 @@ public class User extends GenericUser implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String gender;
+	private String[] keywords;
 	
 	@OneToMany(mappedBy="user")
 	private List<RecommendList> recommendLists = new ArrayList<RecommendList>();
@@ -203,6 +204,14 @@ public class User extends GenericUser implements Serializable {
 	public ViewHistory removeViewHistory(ViewHistory viewHistory){
 		getViewHistoryList().remove(viewHistory);
 		return viewHistory;
+	}
+
+	public String[] getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String[] keywords) {
+		this.keywords = keywords;
 	}
 }
 

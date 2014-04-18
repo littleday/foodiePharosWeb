@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="entity.User"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -29,7 +29,15 @@
 
 	<body>	
 		<%@include file="/part/navbar.jsp" %>
-		
+		<%
+			User loginedUser = (User) request.getSession().getAttribute("user");
+			if(loginedUser == null){
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+			}else{
+				
+			}
+		%>
 		<!-- Main -->
 		<div class="main">
 		  <div class="container">
@@ -39,17 +47,17 @@
 		        <hr class="">
 		        <div class="profile-box">
 		          <div class="profile-cover-image">
-		            <img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="">
+		            <img src="<%=loginedUser.getPhoto() %>" class="">
 		          </div>
 		          <div class="profile-picture">
-		            <img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="">
+		            <img src="<%=loginedUser.getPhoto() %>" class="">
 		          </div>
 		          <div class="profile-content">
-		            <h1 class="">John Doe</h1>
+		            <h1 class=""><%=loginedUser.getFirstName()+ " "+ loginedUser.getLastName() %></h1>
 		            
-		            <p class="">freshyogurt.nan@gmail.com
-		              <br class="">Gender: Male
-		              <br class="">Privilege: VIP</p>
+		            <p class=""><%=loginedUser.getEmail() %>
+		              <br class="">Gender: <%=loginedUser.getGender() %>
+		            </p>
 		            <div class="socials"> <a href="#" class="">
 		              <i class="fa fa-dribbble"></i>
 		              </a>
