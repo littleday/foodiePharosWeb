@@ -54,7 +54,6 @@
 		        <div class="input-group" style="max-width:470px;">
 		          <ul class="nav navbar-nav">
 		            <li><input type="text" class="form-control input-xs" id="SearchKey" placeholder="Search what you like"></li>
-		            <li>&nbsp;</li>
 		            <li><input type="text" class="form-control input-xs" id="SearchPos" placeholder="Where" %=""></li>
 		            <li>
 		              <button type="submit" class="btn btn-theme btn-xs">Search</button>
@@ -62,41 +61,16 @@
 		          </ul>
 		        </div>
 		      </form>      
-		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#">Sign up</a></li>
-		        
-		        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in<span class="caret"></span></a>
-		          <ul class="dropdown-menu dropdown-inverse" style="padding: 15px;min-width: 250px;">
-		            <li>
-		              <div class="row">
-		                <div class="col-md-12">
-		                  <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login_nav">
-		                    <div class="form-group">
-		                      <label class="sr-only" for="InputEmail1">Email address</label>
-		                      <input type="email" class="form-control" id="InputEmail1" placeholder="Email address" required="">
-		                    </div>
-		                    
-		                    <div class="form-group">
-		                      <label class="sr-only" for="InputPassword1">Password</label>
-		                      <input type="password" class="form-control" id="InputPassword1" placeholder="Password" required="">
-		                    </div>
-		                    
-		                    <div class="form-group">                                    
-		                      <label class="checkbox" for="checkbox1">
-		                        <input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">Remember me
-		                      </label>
-		                    </div>
-		                    
-		                    <div class="form-group">
-		                      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-		                    </div>
-		                  </form>
-		                </div>
-		              </div>
-		            </li>
-		          </ul>
-		        </li>
-		      </ul>
+				<ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown"><a href ="#" class ="dropdown-toggle" data-toggle="dropdown">My Profile<span class="caret"></span></a>
+		               <ul class="dropdown-menu">
+		               <li><a href="fakelink">My Profile</a></li>
+		               <li><a href="fakelink">My Loves</a></li>
+		               <li><a href="fakelink">My Settings</a></li>
+		               <li class="highlighted"><a href="fakelink">Logout</a></li>
+		               </ul>
+		           	</li>  
+				</ul>
 		    </div>
 		  </div>
 		</div>
