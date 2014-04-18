@@ -20,8 +20,15 @@
 <script src="includes/js/bootstraps.min.js"></script>
 <![endif]-->
 
-<script type="text/javascript" src="includes/js/oauth.js"></script>
-<script type="text/javascript" src="includes/js/sha1.js"></script>
+<!--  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>-->
+
+<script src="includes/js/jquery-1.4.4.min.js"></script>
+<script src="includes/js/oauth.js"></script>
+<script src="includes/js/sha1.js"></script>
+
 <script type="text/javascript">
             var auth = {
 
@@ -61,6 +68,8 @@
 
             var parameterMap = OAuth.getParameterMap(message.parameters);
             console.log(parameterMap);
+            
+            
 
             $.ajax({
                 'url' : message.action,
@@ -69,7 +78,43 @@
                 'jsonpCallback' : 'cb',
                 'success' : function(data, textStats, XMLHttpRequest) {
                     console.log(data);
-                    $("body").append(data);
+                    var businesses = data.businesses;
+                    var table = $("tbody");
+                    var template = "<tr id='123'></tr>";
+                    var td_img_str = "<td><img src='xxx.jgp' /></td>";
+                    
+                    for(var i = 0; i < businesses.length; ++i){
+                    	var item = businesses[i];
+                    	var bizid = item.id;
+                    	var name = item.name;
+                    	var stars = item.rating;
+                    	var imgUrl = item.image_url;
+                    	var categoriesArray = item.categories;
+                    	var categoryString = categoriesArray[0][0];
+                    	var address = item.location.address[0] + ", " + item.location.city;
+                    	
+                    	for(var j = 1; j < categoriesArray.length; ++j){
+                    		categoryString += ", " + categoriesArray[j][0]
+                    	}
+                    	
+                    	console.log([bizid, name, stars, categoryString, address]);
+                    	
+                    	var tr = jQuery(template);
+                    	tr.attr("id", bizid);
+                    	var td_img = jQuery(td_img_str);
+                    	td_img.find("img").attr("src", imgUrl);
+                    	
+                    	tr.append(td_img);
+                    	tr.append("<td>"+ name +"</td>");
+                    	tr.append("<td>"+ stars +"</td>");
+                    	tr.append("<td>"+ categoryString +"</td>");
+                    	tr.append("<td>"+ address +"</td>");
+                    	
+                    	table.append(tr);
+                    }
+                    
+                    
+                    
                 }
             });
 
@@ -151,21 +196,14 @@
                    <table class="table" name="search_results">
                    <thead>
                        <tr>
+                       <th>Image</th>
                        <th>Name</th>
                        <th>Stars</th>
                        <th>Categories</th>
                        <th>Address</th>
                        </tr>
                    </thead>
-                  <tbody>
-                    
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>  
+                  <tbody id="tbody"></tbody>  
                   </table>
                </div>  
 		</div><!-- End row-->
