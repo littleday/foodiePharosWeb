@@ -101,7 +101,7 @@
 									<input id="repeat_pwd" name="repeat_pwd" class="form-control" type="password" />
 		 						</div>
 	 						</div>	 						
-	 						<hr>
+	 					
 	 						<div class="row">
 	 							<div class="col-md-4">
 			 					</div>

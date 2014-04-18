@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="entity.User"%>
+    pageEncoding="utf-8" import="entity.*, java.util.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -34,10 +34,13 @@
 			if(loginedUser == null){
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			
-			}else{
-				
 			}
+			
+			List<Review> reviews = loginedUser.getReviewList();
+			
 		%>
+		
+		
 		<!-- Main -->
 		<div class="main">
 		  <div class="container">
@@ -72,122 +75,44 @@
 		          </div>
 		        </div>
 		      </div>
-		      <!-- /col-3 -->
+		     
+		     
+		     
 		      <div class="col-md-9">
-		        <!-- column 2 -->
-		        <ul class="list-inline pull-right">
-		          <li><a href="#" class=""><i class="glyphicon glyphicon-cog"></i></a>
-		          </li>
-		          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a>
-		            <ul class="dropdown-menu" role="menu">
-		              <li><a href="#" class="">1. Is there a way..</a>
-		              </li>
-		              <li><a href="#" class="">2. Hello, admin. I would..</a>
-		              </li>
-		              <li><a href="#" class=""><strong class="">All messages</strong></a>
-		              </li>
-		            </ul>
-		          </li>
-		          <li><a href="#" class=""><i class="glyphicon glyphicon-user"></i></a>
-		          </li>
-		          <li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal" class=""><span class="glyphicon glyphicon-plus-sign"></span> Add Widget</a>
-		          </li>
-		        </ul> <a href="#" class=""><strong><i class="glyphicon glyphicon-dashboard"></i> Recent Reviews</strong></a> 
-		        <hr class="">
+		         <a href="#" class=""><strong><i class="glyphicon glyphicon-dashboard"></i> Recent Reviews</strong></a> 
+		         <hr class="">
+		         
+		      
+		         
 		        <div class="row">
-		          <div class="col-xs-8">
-		            <h6><a href="#" class=""><b>Mike's Pastry</b></a></h6>
-		            <p class="">Category: <a href="#" class="">Bakeries, Ice Cream &amp; Frozen Yogurt</a></p>
-		          </div>
-		          <div class="col-xs-4">
-		            <p class="">300 Hanover St Boston, MA 02113 (617) 742-3050</p>
-		          </div>
+			       <div class="col-xs-8">
+			          <h6 id = "restId">Mike's Pastry</h6>
+			          <p class="">Category: <span id="categories">Chinese, American</span></p>
+			       </div>
+			       <div class="col-xs-4">
+			          <p id="restAddress" class="">300 Hanover St Boston, MA 02113 (617) 742-3050</p>
+			       </div>
+			       <div class = "pull-left">
+			           <input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
+				       <p id="reviewContent" class="">
+				        	Hello this is my first review!!
+				       </p>
+				   </div>   
+				    
+			       <p class="pull-right">
+			         <a href="#" class="">More Reviews&gt;&gt;</a>
+			       </p>
+		          
 		        </div>
-      			<form>
-					<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-				</form>
-				<script>
-					document.getElementById('input-1').value= 4;
-				</script>
-		        <div class="row">
-		          <div class="col-xs-12">
-		            <p class="">
-			            I ate twice in this restaurant. The cheese in this restaurant is very very yummy!
-			            <a href="#" class="">[Full Text]</a>
-		            </p>
-		            <ul class="list-inline">
-		              <li>2 Days Ago</li>
-		              <li class="pull-right">
-            	  		<ul class="list-inline">
-							<li><a href="#" class=""><i class="glyphicon glyphicon-heart"></i> 2 Like</a>
-							</li>
-							<li><a href="#" class=""><i class="glyphicon glyphicon-comment"></i> 2 Comments</a>
-							</li>
-							<li><a href="#" class=""><i class="glyphicon glyphicon-warning-sign"></i> Report</a>
-							</li>
-		              	</ul>              
-		              </li> 
-		            </ul>
-		          </div>
-		        </div>
-		        <hr class="">
-		        <div class="row">
-		          <div class="col-xs-12">
-		            <h2 class=""><a href="#" class="">Mike's Pastry</a></h2>
-		            
-		            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
-		              varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
-		              condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
-		              nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
-		              accumsan. Aliquam in felis sit amet augue.</p>
-		            <p class="lead">
-		              <button class="btn btn-default">Read More</button>
-		            </p>
-		            <p class="pull-right"><span class="label label-default">keyword</span>  <span class="label label-default">tag</span> 
-		              <span class="label label-default">post</span>
-		            </p>
-		            <ul class="list-inline">
-		              <li><a href="#" class="">4 Days Ago</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-comment"></i> 7 Comments</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-share"></i> 56 Shares</a>
-		              </li>
-		            </ul>
-		          </div>
-		        </div>
-		        <hr class="">
-		        <div class="row">
-		          <div class="col-xs-12">
-		            <h2 class=""><a href="#" class="">Mike's Pastry</a></h2>
-		            
-		            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
-		              varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
-		              condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
-		              nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
-		              accumsan. Aliquam in felis sit amet augue.</p>
-		            <p class="lead">
-		              <button class="btn btn-default">Read More</button>
-		            </p>
-		            <p class="pull-right"><span class="label label-default">keyword</span>  <span class="label label-default">tag</span> 
-		              <span class="label label-default">post</span>
-		            </p>
-		            <ul class="list-inline">
-		              <li><a href="#" class="">1 Week Ago</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-comment"></i> 4 Comments</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-share"></i> 34 Shares</a>
-		              </li>
-		            </ul>
-		          </div>
-		        </div>
-		        <!--/row-->
-		        <p class="pull-right">
-		          <a href="#" class="">More Reviews&gt;&gt;</a>
-		        </p>
+		        
+		        
+				
 		      </div>
-		      <!--/col-span-9-->
+		
+		      
+		      
+		      
+		      
 		    </div>
 		  </div>
 		</div>
