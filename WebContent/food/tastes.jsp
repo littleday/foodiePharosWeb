@@ -50,6 +50,7 @@
                 <div class="input-group" style="max-width:470px;">
                 <ul class="nav navbar-nav">
                     <li><input type="text" class="form-control input-xs" id="SearchKey" placeholder="Search what you like"></li>
+                    <li>&nbsp;</li>
 					<li><input type="text" class="form-control input-xs" id="SearchPos" placeholder="Where"%></li>
                     <li>
                     <button type="submit" class="btn btn-theme btn-xs">Search</button>
