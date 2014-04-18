@@ -46,7 +46,7 @@
                 </li>
                 <li><a href="../hot.jsp">Hot!</a></li>
             </ul>    
-            <form class="navbar-form pull-left" role="search" action="result.jsp">
+            <form class="navbar-form pull-left" role="search" action="../result.jsp">
                 <div class="input-group" style="max-width:470px;">
                 <ul class="nav navbar-nav">
                     <li><input type="text" class="form-control input-xs" id="SearchKey" name="searchKey" placeholder="Search what you like"></li>
