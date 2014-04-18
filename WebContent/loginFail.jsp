@@ -3,6 +3,7 @@
 		<meta charset="utf-8">
 		<title>FoodiePharos: Find your appetites here!</title>
 		<meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+		<meta http-equiv="refresh" content="3;url=index.jsp"/>
 		<link rel="shortcut icon" href="includes/images/PFIco.ico">		
 		<!-- Loading Bootstrap -->
 		<link href="includes/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -19,9 +20,11 @@
 		<script src="includes/js/respond.min.js"></script>
 		<script src="includes/js/bootstraps.min.js"></script>
 		<![endif]-->
+	
 	</head>
 	
 	<body>
+
 		<div class="navbar navbar-inverse navbar-fixed-top">
 		    <div class="container">
 		        <div class="navbar-header">

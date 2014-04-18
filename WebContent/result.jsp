@@ -41,8 +41,8 @@
                 }
             };
 
-            var terms = 'food';
-            var near = 'San+Francisco';
+            var terms = GetURLParameter('searchKey');
+            var near = GetURLParameter('searchPos');
 
             var accessor = {
                 consumerSecret : auth.consumerSecret,
@@ -113,11 +113,23 @@
                     	table.append(tr);
                     }
                     
-                    
-                    
                 }
             });
-
+            
+            
+            function GetURLParameter(sParam)
+            {
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++) 
+                {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam) 
+                    {
+                        return sParameterName[1];
+                    }
+                }
+            }
         </script>
 
 </head>
@@ -147,17 +159,17 @@
                 </li>
                 <li><a href="hot.jsp">Hot!</a></li>
             </ul>    
-            <form class="navbar-form pull-left" role="search">
-                <div class="input-group" style="max-width:470px;">
-                <ul class="nav navbar-nav">
-                    <li><input type="text" class="form-control input-xs" id="SearchKey" placeholder="Search what you like"></li>
-					<li><input type="text" class="form-control input-xs" id="SearchPos" placeholder="Where"%></li>
-                    <li>
-                    <button type="submit" class="btn btn-theme btn-xs">Search</button>
-                    </li>
-                    </ul>
-                </div>
-            </form>       
+            <form class="navbar-form pull-left" role="search" action="result.jsp">
+		                <div class="input-group" style="max-width:470px;">
+		                <ul class="nav navbar-nav">
+		                    <li><input type="text" class="form-control input-xs" id="SearchKey" name="searchKey" placeholder="Search what you like"></li>
+							<li><input type="text" class="form-control input-xs" id="SearchPos" name="searchPos" placeholder="Where"%></li>
+		                    <li>
+		                    <button type="submit" class="btn btn-theme btn-xs">Search</button>
+		                    </li>
+		                    </ul>
+		                </div>
+		            </form>            
             <ul class="nav navbar-nav navbar-right">
 	            <li class="dropdown"><a href ="#" class ="dropdown-toggle" data-toggle="dropdown">My Profile<span class="caret"></span></a>
                     <ul class="dropdown-menu">
