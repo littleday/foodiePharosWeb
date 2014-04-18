@@ -46,12 +46,17 @@
                 </li>
                 <li><a href="../hot.jsp">Hot!</a></li>
             </ul>    
-            <form class="navbar-form pull-left" role="search">
+            <form class="navbar-form pull-left" role="search" action="../result.jsp">
                 <div class="input-group" style="max-width:470px;">
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
                     <li><input type="text" class="form-control input-xs" id="SearchKey" placeholder="Search what you like"></li>
                     <li>&nbsp;</li>
 					<li><input type="text" class="form-control input-xs" id="SearchPos" placeholder="Where"%></li>
+=======
+                    <li><input type="text" class="form-control input-xs" id="SearchKey" name="searchKey" placeholder="Search what you like"></li>
+					<li><input type="text" class="form-control input-xs" id="SearchPos" name="searchPos" placeholder="Where"%></li>
+>>>>>>> FETCH_HEAD
                     <li>
                     <button type="submit" class="btn btn-theme btn-xs">Search</button>
                     </li>

@@ -48,6 +48,7 @@
 		                
 		                <li><a href="#fakelink">Hot!</a></li>
 	          		</ul>
+<<<<<<< HEAD
 	          		<form class="navbar-form pull-left" role="search">
                 <div class="input-group" style="max-width:470px;">
                 <ul class="nav navbar-nav">
@@ -60,6 +61,19 @@
                     </ul>
                 </div>
             </form>      
+=======
+	          		<form class="navbar-form pull-left" role="search" action="result.jsp">
+		                <div class="input-group" style="max-width:470px;">
+		                <ul class="nav navbar-nav">
+		                    <li><input type="text" class="form-control input-xs" id="SearchKey" name="searchKey" placeholder="Search what you like"></li>
+							<li><input type="text" class="form-control input-xs" id="SearchPos" name="searchPos" placeholder="Where"%></li>
+		                    <li>
+		                    <button type="submit" class="btn btn-theme btn-xs">Search</button>
+		                    </li>
+		                    </ul>
+		                </div>
+		            </form>      
+>>>>>>> FETCH_HEAD
 	          		<ul class="nav navbar-nav navbar-right">
 	          			<li><a href="#">Sign up</a></li>
 	          			
