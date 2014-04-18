@@ -1,13 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="entity.User" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+
+<style>
+
+.visable{
+visibility:visible;
+}
+.hidden{
+visibility:hidden;
+}
+
+</style>
 </head>
 <body>
+<%
+	String loginedStyle;
+	String guestStyle;
+	User loginUser = (User)request.getSession().getAttribute("user");
+	
+	// guest user
+	if(loginUser == null){ 
+		loginedStyle = "hidden";
+		guestStyle = "visable";
+	
+	}else{
+		loginedStyle = "visable";
+		guestStyle = "hidden";
+	}
 
+%>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -45,7 +71,8 @@
                 </div>
 		      </form>            
 
-            <ul class="nav navbar-nav navbar-right">
+
+            <ul class="nav navbar-nav navbar-right <%=loginedStyle %> }">
 	            <li class="dropdown"><a href ="#" class ="dropdown-toggle" data-toggle="dropdown">My Profile<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                     <li><a href="${pageContext.request.contextPath}/myprofile.jsp">My Profile</a></li>
@@ -55,6 +82,40 @@
                     </ul>
                 </li>  
             </ul>
+            
+            
+            <ul class="nav navbar-nav navbar-right <%=guestStyle %>">
+                <li><a href="signup.jsp">Sign up</a></li>
+			    <li class="dropdown">
+			    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in<span class="caret"></span></a>
+				    <ul class="dropdown-menu dropdown-inverse" style="padding: 15px;min-width: 250px;">
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                            <form class="form" role="form" method="post" action="SigninServlet" accept-charset="UTF-8" id="login_nav">
+	                                <div class="form-group">
+	                                    <label class="sr-only" for="InputEmail1">Email address</label>
+	                                    <input type="email" class="form-control" id="InputEmail1" name="email" placeholder="Email address" required>
+	                                </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="InputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="InputPassword1" name="password" placeholder="Password" required>
+                                    </div>
+	                                <div class="form-group">                                    
+	                                    <label class="checkbox" for="checkbox1">
+	                                    <input type="checkbox" value="" id="checkbox1" name="remember" data-toggle="checkbox">Remember me
+	                                    </label>
+	                                </div>
+	                                <div class="form-group">
+	                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+	                                </div>
+	                            </form>
+	                        </div>
+	                    </div>
+	                </ul>
+	             </li>
+             </ul>
+
+            
         </div><!--/.nav-collapse -->      
     </div><!--/.container -->
 </div>
