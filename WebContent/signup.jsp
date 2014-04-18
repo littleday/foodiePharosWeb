@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -23,96 +26,8 @@
 	</head>
 
 	<body>
+		<%@include file="/part/navbar.jsp" %>
 	
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-		           	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		           		<span class="icon-bar"></span>
-		           		<span class="icon-bar"></span>
-		           		<span class="icon-bar"></span>
-		           	</button>
-		           	<a class="navbar-brand" href="index.jsp">FoodiePharos</a>
-		       	</div>
-		       	
-		       	<div class="navbar-collapse collapse">
-	      			<ul class="nav navbar-nav">           
-		                <li class="dropdown"><a href ="#" class ="dropdown-toggle" data-toggle="dropdown">Cuisines<span class="caret"></span></a>
-		                    <ul class="dropdown-menu">
-		                        <li><a href="food/styles.jsp">Styles</a></li>
-		                        <li><a href="food/regions.jsp">Regions</a></li>
-		                        <li><a href="food/mealpoints.jsp">Meal Points</a></li>
-		                        <li><a href="food/tastes.jsp">Tastes</a></li>
-		                    </ul>
-		                </li>
-		                
-		                <li><a href="#fakelink">Hot!</a></li>
-	          		</ul>
-<<<<<<< HEAD
-	          		<form class="navbar-form pull-left" role="search">
-                <div class="input-group" style="max-width:470px;">
-                <ul class="nav navbar-nav">
-                    <li><input type="text" class="form-control input-xs" id="SearchKey" placeholder="Search what you like"></li>
-                    <li>&nbsp;</li>
-					<li><input type="text" class="form-control input-xs" id="SearchPos" placeholder="Where"%></li>
-                    <li>
-                    <button type="submit" class="btn btn-theme btn-xs">Search</button>
-                    </li>
-                    </ul>
-                </div>
-            </form>      
-=======
-	          		<form class="navbar-form pull-left" role="search" action="result.jsp">
-		                <div class="input-group" style="max-width:470px;">
-		                <ul class="nav navbar-nav">
-		                    <li><input type="text" class="form-control input-xs" id="SearchKey" name="searchKey" placeholder="Search what you like"></li>
-							<li><input type="text" class="form-control input-xs" id="SearchPos" name="searchPos" placeholder="Where"%></li>
-		                    <li>
-		                    <button type="submit" class="btn btn-theme btn-xs">Search</button>
-		                    </li>
-		                    </ul>
-		                </div>
-		            </form>      
->>>>>>> FETCH_HEAD
-	          		<ul class="nav navbar-nav navbar-right">
-	          			<li><a href="#">Sign up</a></li>
-	          			
-	          			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in<span class="caret"></span></a>
-	          				<ul class="dropdown-menu dropdown-inverse" style="padding: 15px;min-width: 250px;">
-	          					<li>
-	        						<div class="row">
-								        <div class="col-md-12">
-								            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login_nav">
-								                <div class="form-group">
-							                    	<label class="sr-only" for="InputEmail1">Email address</label>
-					                             	<input type="email" class="form-control" id="InputEmail1" placeholder="Email address" required>
-												</div>
-						                         
-												<div class="form-group">
-				                             		<label class="sr-only" for="InputPassword1">Password</label>
-				                             		<input type="password" class="form-control" id="InputPassword1" placeholder="Password" required>
-												</div>
-						                         
-												<div class="form-group">                                    
-				                             		<label class="checkbox" for="checkbox1">
-					                             	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">Remember me
-					                             	</label>
-												</div>
-						                         
-												<div class="form-group">
-					                         		<button type="submit" class="btn btn-primary btn-block">Sign in</button>
-												</div>
-											</form>
-	                     				</div>
-			            			</div>
-	          					</li>
-	          				</ul>
-	          			</li>
-	          		</ul>
-		       	</div>
-			</div>
-		</div>
-		
 		<div id="header">
 			<div class="container">
 				<form class="form-signup" role="form" action="SignupServlet" method="post">
