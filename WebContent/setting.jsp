@@ -29,99 +29,94 @@
 	
 		<div id="header">
 			<div class="container">
-			<h1 style="margin-top: -70px;">Setting</h1>
-			<form class="form" action="SettingServlet" method="post">
-				<table class="table" cellspacing="1" cellpadding="2" width="99%" align="center" border="0"> 
-					<tbody>
-						<tr>
-				            <td class="td_bg" width="45%" height="26" align="right">Photo:</td>
-  					            <td class="td_bg" width="55%">
-					            	<img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="" width="20%">
-					            	<input type="file" name="photo" style="width:252px;">
-				            </td>
-				        </tr>
-				        <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">First Name:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <div style="float:left;">
-				                	<input id="first_name" name="first_name" class="form-control" />
-			                	</div>
-			                	<div id="yzPwd" style="float:left;margin-left:6px;margin-top:3px;">
-			                	</div>
-				            </td> 
-				        </tr>
-				        <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">Last Name:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <div style="float:left;">
+				<h1 style="margin-top: -70px;">Setting</h1>
+				<form class="form" action="SettingServlet" method="post" style="margin-bottom: 20px;">
+					<div class="row">
+			 			<div class="col-md-2">
+			 			</div>
+			 			<div class="col-md-6">
+		 					<div class="row">
+		 						<div class="col-md-6">
+				            		<p width="45%" height="26" align="right">Photo:</p> 							
+		 						</div>
+		 						<div class="col-md-6">
+		 							<img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="" width="45%">
+					            	<input type="file" name="photo" style="width:252px; margin-top: 2px; margin-bottom: 5px;">
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+		            				<p width="45%" height="26" align="right">First Name:</p>											
+		 						</div>
+		 						<div class="col-md-6">
+			                		<input id="first_name" name="first_name" class="form-control" />
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+		 							<p width="45%" height="26" align="right">Last Name:</p>
+		 						</div>
+		 						<div class="col-md-6">
 									<input id="last_name" name="last_name" class="form-control" />
-			                	</div>
-			                	<div id="yzPwd" style="float:left;margin-left:6px;margin-top:3px;">
-			                	</div>
-				            </td> 
-				        </tr>
-				        <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">Email:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <div style="float:left;">
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+	 								<p width="45%" height="26" align="right">Email:</p>	
+		 						</div>
+		 						<div class="col-md-6">
 									<input type="email" name="signup_email" class="form-control" id="signup_email" />
-			                	</div>
-			                	<div id="yzPwd" style="float:left;margin-left:6px;margin-top:3px;">
-			                	</div> 
-				            </td> 
-				        </tr>
-				        <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">Gender:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <input type="radio" id="sex" name="sex" value="1" checked>Male
-				                <input type="radio" id="sex" name="sex" value="2">Female
-				            </td> 
-				        </tr>
-     				    <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">Current Password:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <div style="float:left;">
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+									<p width="45%" height="26" align="right">Gender:</p>
+		 						</div>
+		 						<div class="col-md-6">
+		 							<input type="radio" id="sex" name="sex" value="1" checked>Male
+					                <input type="radio" id="sex" name="sex" value="2">Female
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+									<p width="45%" height="26" align="right">Current Password:</p>	 						
+		 						</div>
+		 						<div class="col-md-6">
 									<input id="current_pwd" name="current_pwd" class="form-control" type="password" />
-			                	</div>
-			                	<div id="yzPwd" style="float:left;margin-left:6px;margin-top:3px;">
-			                	</div>
-				            </td> 
-				        </tr>
-				        <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">New Password:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <div style="float:left;">
-									<input id="new_pwd" name="new_pwd" class="form-control" type="password" />
-			                	</div>
-			                	<div id="yzPwd" style="float:left;margin-left:6px;margin-top:3px;">
-			                	</div>
-				            </td> 
-				        </tr>
-				        <tr> 
-				            <td class="td_bg" width="45%" height="26" align="right">Repeat Password:</td> 
-				            <td class="td_bg" width="55%"> 
-				                <div style="float:left;">
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+									<p width="45%" height="26" align="right">New Password:</p>	 							 						
+		 						</div>
+		 						<div class="col-md-6">
+									<input id="new_pwd" name="new_pwd" class="form-control" type="password" />					
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+									<p width="45%" height="26" align="right">Repest Password:</p>	 							 						
+		 						</div>
+		 						<div class="col-md-6">
 									<input id="repeat_pwd" name="repeat_pwd" class="form-control" type="password" />
-			                	</div>
-			                	<div id="yzPwd" style="float:left;margin-left:6px;margin-top:3px;">
-			                	</div> 
-				            </td> 
-				        </tr>
-				    </tbody> 
-		 		</table>
-		 		<div class="row">
-		 			<div class="col-md-4">
+		 						</div>
+	 						</div>	 						
+	 						<hr>
+	 						<div class="row">
+	 							<div class="col-md-4">
+			 					</div>
+		 						<div class="col-md-4">
+									<button id="change-pwd-button" type="submit" class="btn btn-primary btn-block">Save</button>		
+		 						</div>
+		 						<div class="col-md-4">
+									<button id="change-pwd-button" type="reset" class="btn btn-primary btn-block">Reset</button>
+		 						</div>
+	 						</div>
+						</div>
+						<div class="col-md-4">
+			 			</div>
 		 			</div>
-		 			<div class="col-md-2">
-						<button id="change-pwd-button" type="submit" class="btn btn-primary btn-block">Save</button>		
-		 			</div>
-		 			<div class="col-md-2">
-						<button id="change-pwd-button" type="reset" class="btn btn-primary btn-block">Reset</button>
-		 			</div>
-		 			<div class="col-md-4">
-		 			</div>
-		 		</div>
-			</form>
+				</form>
 			</div>
 		</div>
 			
