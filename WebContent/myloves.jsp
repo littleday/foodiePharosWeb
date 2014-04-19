@@ -87,26 +87,34 @@
 		         		RestaurantObject restObj = restTool.getRestObj(); %>
 		         
 		        <div class="row">
-		        
-		        	<div class="col-xs-3">
-			       	<br />
-			          <p id="restAddress" class="">
-			          	<%=restObj.getAddress()%><br/>
-			          	<img src="<%=restObj.image_url %>" />
-			          </p>
-			       </div>
-		        	
-			       <div class="col-xs-9">
-			          <h6 id = "restId"><%=restObj.name %></h6>
+		        <div class ="col-xs-8">
+		         <h6 id = "restId"><%=restObj.name %></h6>
 			          <p class="">Category: <span id="categories"><%=restObj.getCategories() %></span></p>
-			           <input id="input-1" type="number" class="rating" data-readonly="true" 
+			           <p><input id="input-1" type="number" class="rating" data-readonly="true" 
 			           		value="<%=restObj.rating%>" data-size="xs" data-show-clear="false" data-show-caption="false">
+			           		</p>
 			           <p id="reviewContent" class="">
 				        	<%=restObj.snippet_text %>
 				       </p>
-			       </div>
-			       
 		        </div>
+		         <div class ="col-xs-4">
+		         <br />
+			          <p id="restAddress" class="">
+			          	<%=restObj.getAddress()%><br/>
+			          	<img src="<%=restObj.image_url %>" class="img-circle"/>
+			          </p>
+		        </div>
+		        </div>	        
+		        
+		         <div class ="row divider">
+		         <div class="col-xs-12">
+		         <hr>
+		         </div>
+		        </div>
+		        
+		        
+		   
+
 		         <% } %>
 				
 		      </div>
