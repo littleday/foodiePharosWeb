@@ -27,7 +27,7 @@
 		<![endif]-->
 	</head>
 	<body>	
-<%@include file="/part/navbar.jsp" %>
+		<%@include file="navbar.jsp" %>	
         	
         <div class = "container">
          <div id="header">
