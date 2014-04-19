@@ -23,8 +23,8 @@ public class Test {
 		Restaurant rest = new Restaurant(null, 3, 100, "businessid");
 		
 		Service service = new Service();
-		service.addRestaurant(loc, rest);
+		User user = service.getUserProfile("liyang920407@hotmail.com");
+		System.out.println(user.getFavoriteRestaurants().size());
 		
-		System.out.println(rest.getId());
 	}
 }

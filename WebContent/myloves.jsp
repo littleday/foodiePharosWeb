@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="entity.*, java.util.*, myutil.*, service.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -8,6 +8,9 @@
 		<link rel="shortcut icon" href="includes/images/PFIco.ico">	
 		<!-- Loading Bootstrap -->
 		<link href="includes/bootstrap/css/bootstrap.css" rel="stylesheet">
+		
+		<!-- Loading Star Rating -->
+		<link href="includes/css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
 		
 		<!-- Loading Flat UI -->
 		<link href="includes/css/flat-ui.css" rel="stylesheet">
@@ -24,10 +27,19 @@
 		<![endif]-->
 	</head>
 
-	<body>
-		
+	<body>	
 		<%@include file="/part/navbar.jsp" %>
-
+		<%  User loginedUser = (User) request.getSession().getAttribute("user");
+				
+			if(loginedUser == null){
+				// won't work
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
+			
+			List<Restaurant> restaurants = loginedUser.getFavoriteRestaurants();
+		%>
+		
+		
 		<!-- Main -->
 		<div class="main">
 		  <div class="container">
@@ -37,17 +49,17 @@
 		        <hr class="">
 		        <div class="profile-box">
 		          <div class="profile-cover-image">
-		            <img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="">
+		            <img src="<%=loginedUser.getPhoto() %>" class="">
 		          </div>
 		          <div class="profile-picture">
-		            <img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="">
+		            <img src="<%=loginedUser.getPhoto() %>" class="">
 		          </div>
 		          <div class="profile-content">
-		            <h1 class="">John Doe</h1>
+		            <h1 class=""><%=loginedUser.getFirstName()+ " "+ loginedUser.getLastName() %></h1>
 		            
-		            <p class="">freshyogurt.nan@gmail.com
-		              <br class="">Gender: Male
-		              <br class="">Privilege: VIP</p>
+		            <p class=""><%=loginedUser.getEmail() %>
+		              <br class="">Gender: <%=loginedUser.getGender() %>
+		            </p>
 		            <div class="socials"> <a href="#" class="">
 		              <i class="fa fa-dribbble"></i>
 		              </a>
@@ -62,112 +74,47 @@
 		          </div>
 		        </div>
 		      </div>
-		      <!-- /col-3 -->
+		     
+		     
+		     
 		      <div class="col-md-9">
-		        <!-- column 2 -->
-		        <ul class="list-inline pull-right">
-		          <li><a href="#" class=""><i class="glyphicon glyphicon-cog"></i></a>
-		          </li>
-		          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a>
-		            <ul
-		            class="dropdown-menu" role="menu">
-		              <li><a href="#" class="">1. Is there a way..</a>
-		              </li>
-		              <li><a href="#" class="">2. Hello, admin. I would..</a>
-		              </li>
-		              <li><a href="#" class=""><strong class="">All messages</strong></a>
-		              </li>
-		            </ul>
-		          </li>
-		          <li><a href="#" class=""><i class="glyphicon glyphicon-user"></i></a>
-		          </li>
-		          <li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal" class=""><span class="glyphicon glyphicon-plus-sign"></span> Add Widget</a>
-		          </li>
-		        </ul> <a href="#" class=""><strong><i class="glyphicon glyphicon-dashboard"></i> My Loves</strong></a> 
-		        <hr class="">
+		         <a href="#" class=""><strong><i class="glyphicon glyphicon-dashboard"></i> My loves</strong></a> 
+		         <hr class="">
+		         
+		      
+		         <% for(Restaurant rest: restaurants) { 
+		         		RestaurantTool restTool = new RestaurantTool(rest);
+		         		RestaurantObject restObj = restTool.getRestObj(); %>
+		         
 		        <div class="row">
-		          <div class="col-xs-12">
-		            <h2 class="">Article Heading</h2>
-		            
-		            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
-		              varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
-		              condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
-		              nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
-		              accumsan. Aliquam in felis sit amet augue.</p>
-		            <p class="lead">
-		              <button class="btn btn-default">Read More</button>
-		            </p>
-		            <p class="pull-right"><span class="label label-default">keyword</span>  <span class="label label-default">tag</span> 
-		              <span
-		              class="label label-default">post</span>
-		            </p>
-		            <ul class="list-inline">
-		              <li><a href="#" class="">2 Days Ago</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-comment"></i> 2 Comments</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-share"></i> 14 Shares</a>
-		              </li>
-		            </ul>
-		          </div>
+		        
+		        	<div class="col-xs-3">
+			       	<br />
+			          <p id="restAddress" class="">
+			          	<%=restObj.getAddress()%><br/>
+			          	<img src="<%=restObj.image_url %>" />
+			          </p>
+			       </div>
+		        	
+			       <div class="col-xs-9">
+			          <h6 id = "restId"><%=restObj.name %></h6>
+			          <p class="">Category: <span id="categories"><%=restObj.getCategories() %></span></p>
+			           <input id="input-1" type="number" class="rating" data-readonly="true" 
+			           		value="<%=restObj.rating%>" data-size="xs" data-show-clear="false" data-show-caption="false">
+			           <p id="reviewContent" class="">
+				        	<%=restObj.snippet_text %>
+				       </p>
+			       </div>
+			       
 		        </div>
-		        <hr class="">
-		        <div class="row">
-		          <div class="col-xs-12">
-		            <h2 class="">Article Heading</h2>
-		            
-		            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
-		              varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
-		              condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
-		              nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
-		              accumsan. Aliquam in felis sit amet augue.</p>
-		            <p class="lead">
-		              <button class="btn btn-default">Read More</button>
-		            </p>
-		            <p class="pull-right"><span class="label label-default">keyword</span>  <span class="label label-default">tag</span> 
-		              <span
-		              class="label label-default">post</span>
-		            </p>
-		            <ul class="list-inline">
-		              <li><a href="#" class="">4 Days Ago</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-comment"></i> 7 Comments</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-share"></i> 56 Shares</a>
-		              </li>
-		            </ul>
-		          </div>
-		        </div>
-		        <hr class="">
-		        <div class="row">
-		          <div class="col-xs-12">
-		            <h2 class="">Article Heading</h2>
-		            
-		            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
-		              varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
-		              condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
-		              nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
-		              accumsan. Aliquam in felis sit amet augue.</p>
-		            <p class="lead">
-		              <button class="btn btn-default">Read More</button>
-		            </p>
-		            <p class="pull-right"><span class="label label-default">keyword</span>  <span class="label label-default">tag</span> 
-		              <span
-		              class="label label-default">post</span>
-		            </p>
-		            <ul class="list-inline">
-		              <li><a href="#" class="">1 Week Ago</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-comment"></i> 4 Comments</a>
-		              </li>
-		              <li><a href="#" class=""><i class="glyphicon glyphicon-share"></i> 34 Shares</a>
-		              </li>
-		            </ul>
-		          </div>
-		        </div>
-		        <!--/row-->
+		         <% } %>
+				
 		      </div>
-		      <!--/col-span-9-->
+		
+		      
+		      
+		      
+		      
 		    </div>
 		  </div>
 		</div>
@@ -196,6 +143,8 @@
 		<script src="includes/js/flatui-radio.js"></script>
 		<script src="includes/js/jquery.tagsinput.js"></script>
 		<script src="includes/js/jquery.placeholder.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    	<script src="includes/js/star-rating.js" type="text/javascript"></script>
 	   
 	 </body> 
 </html>
