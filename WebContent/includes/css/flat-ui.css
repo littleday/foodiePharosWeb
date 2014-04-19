@@ -335,7 +335,7 @@ small,
   line-height: 2.067;
 }
 .text-muted {
-  color: #bdc3c7;
+	color: #333333;
 }
 .text-inverse {
   color: #ffffff;
@@ -402,9 +402,12 @@ a.bg-danger:hover {
   background-color: #e4b9b9;
 }
 .page-header {
-  padding-bottom: 14px;
-  margin: 60px 0 30px;
-  border-bottom: 1px solid #e7e9ec;
+	padding-bottom: 14px;
+	border-bottom: 1px solid #e7e9ec;
+	margin-bottom: 25px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 60px;
 }
 ul,
 ol {

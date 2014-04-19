@@ -27,7 +27,7 @@
 		<![endif]-->
 	</head>
 	<body>	
-<%@include file="/part/navbar.jsp" %>	
+		<%@include file="navbar.jsp" %>	
         	
         <div class = "container">
          <div id="header">
@@ -55,7 +55,9 @@
                     <li><i class="glyphicon glyphicon-star"></i>  Category:
                         <li>Category 1, Category 2 & Category 3</li>
                     </li>
-                    
+                    <hr>
+                    <li><button name="addFavor"class="btn btn-success" onClick=""><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
+                    </li>           
                 </ul>
             </div>
             <!-- /sidebar -->
@@ -64,8 +66,33 @@
             <div class="column col-sm-9" id="main">
                 <div class="padding">
                     <div class="full col-sm-9">
+                    <div class = "col-sm-12" id="addReview">
+                         <div class="col-sm-12" id="reviews">  
+                          <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-dashboard"></i> Add Your Review</strong>
+                          </div>
+                         <form  action="SettingServlet" method="post">
+							<div class="row">
+			 					<div class="col-sm-2">			 						
+				            		<p width="45%" height="26" align="right">Rating:</p> 							
+			 					</div>
+			 					<div class="col-sm-10">
+     			      				<input name="newRating" id="input-2" type="number" class="rating" data-size="xs" data-show-clear="false" data-show-caption="false">
+			 					</div>
+		 					</div>
+		 					<div class="row">
+			 					<div class="col-sm-2">
+				            		<p width="45%" height="26" align="right">Review:</p> 							
+			 					</div>
+			 					<div class="col-sm-10">
+     			      				<textarea name="reviewContent"rows="4" cols="50"></textarea>
+                                <button name = "reviewSubmit"class="btn btn-primary" onClick="">Submit</button>
+                               <button bane = "reviewReset" class="btn btn-inverse" onClick="">Reset</button> 
+			 					</div>
+		 					</div>
+	 					</form> 	
+                    </div>
                         <!-- content -->
-                        <div class="col-sm-12" id="stories">  
+                        <div class="col-sm-12" id="reviews">  
                           <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-dashboard"></i> Recent Reviews</strong>
                           </div>
                         </div>                
@@ -74,12 +101,18 @@
                         <div class="row">    
                           <div class="col-sm-10">
                             <h3>Review title</h3>
-                            <h4><span class="label label-default">review content</span></h4><h4>
-                            <small class="text-muted">Modified time • <a href="#" class="text-muted">Read More</a></small>
+                            <form>
+					  <input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
+				              </form>
+				      <script>
+					  document.getElementById('input-1').value= 4;
+				      </script>
+                            <div class="well well-sm"><strong>Review content</strong></div>
+                            <small class="text-muted">Modified time</small>
                             </h4>
                           </div>
                           <div class="col-sm-2">
-                          <p>Username</p>
+                          <h4><span class="label label-default">Username</span></h4><h4>
                           <a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
                           </div> 
                         </div>    
@@ -87,53 +120,29 @@
                            <div class="col-sm-12"><hr></div>
                         </div>
                         <!-- one review end -->
+               <!-- one review -->
                         <div class="row">    
                           <div class="col-sm-10">
-                            <h3>Bootstrap Builders Get Their Own Playground</h3>
-                            <h4><span class="label label-default">bootply.com</span></h4><h4>
-                            <small class="text-muted">3 days ago • <a href="#" class="text-muted">Read More</a></small>
+                            <h3>Review title</h3>
+                            <form>
+					  <input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
+				              </form>
+				      <script>
+					  document.getElementById('input-1').value= 4;
+				      </script>
+                            <div class="well well-sm"><strong>Review content</strong></div>
+                            <small class="text-muted">Modified time</small>
                             </h4>
                           </div>
                           <div class="col-sm-2">
-                            <a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
-                          </div>
-                        </div>
-                        
-                        <div class="row divider">    
-                           <div class="col-sm-12"><hr></div>
-                        </div>
-                        
-                        <div class="row">    
-                          <div class="col-sm-10">
-                            <h3>How to: Another Fantastical Article</h3>
-                            <h4><span class="label label-default">bootply.com</span></h4><h4>
-                            <small class="text-muted">4 days ago • <a href="#" class="text-muted">Read More</a></small>
-                            </h4>
-                          </div>
-                          <div class="col-sm-2">
-                            <a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
-                          </div>
-                        </div>
-                        
-                        <div class="row divider">    
-                           <div class="col-sm-12"><hr></div>
-                        </div>
-                        
-                        <div class="row">    
-                          <div class="col-sm-9">
-                            <h3>Another Fantastical Article of Interest</h3>
-                            <h4><span class="label label-default">bootply.com</span></h4><h4>
-                            <small class="text-muted">4 days ago • <a href="#" class="text-muted">Read More</a></small>
-                            </h4>
-                          </div>
-                          <div class="col-sm-3">
-                            <a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
-                          </div>
-                        </div>
+                          <h4><span class="label label-default">Username</span></h4><h4>
+                          <a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
+                          </div> 
+                        </div>    
+                        <!-- one review end -->
                         
                         <div class="col-sm-12">
-                          <div class="page-header text-muted divider">
-                            Up Next
+                          <div class="page-header text-muted divider">More pictures
                           </div>
                         </div>
                       

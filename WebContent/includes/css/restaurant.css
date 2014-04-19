@@ -106,15 +106,15 @@ h1,h2,h3 {
   background-color:transparent;
 }
 .label-default {
-  background-color:#dddddd;
+	background-color: #666666;
 }
 .page-header {
-  margin-top: 55px;
-  padding-top: 9px;
-  border-top:1px solid #eeeeee;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:2px;
+	margin-top: 10px;
+	padding-top: 9px;
+	border-top: 1px solid #eeeeee;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 2px;
 }
 
 .col-sm-9.full {
