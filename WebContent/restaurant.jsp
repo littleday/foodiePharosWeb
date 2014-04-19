@@ -77,8 +77,7 @@
 				            <div class="column col-sm-9" id="main">
 				                <div class="padding">
 				                    <div class="full col-sm-9">
-				                    <div class = "col-sm-12" id="addReview">
-				                         <div class="col-sm-12" id="reviews">  
+			                         	<div class="col-sm-12" id="addReview">  
 					                          <div class="page-header text-muted"><strong><i class="glyphicon glyphicon-star"></i> Add Your Review</strong>
 					                          </div>
 					                         <form  action="SettingServlet" method="post">
@@ -102,55 +101,60 @@
 							 					</div>
 						 					</form> 	
 				                    	</div>
-				                        <!-- content -->
-				                        <div class="col-sm-12" id="reviews">  
-				                          <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-comment"></i> Recent Reviews</strong>
-				                          </div>
-				                        </div>                
+				                        <!-- end addReview -->            
 				                        <!--/reviews-->
 				                        <!-- one review -->
-				                        <div class="row">    
-				                          <div class="col-sm-10">
-				                            <h3>Review title</h3>
-		                            		<form>
-								  				<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-						              		</form>
-										    <script>
-											  document.getElementById('input-1').value= 4;
-										    </script>
-				                            <div class="well well-sm"><strong>Review content</strong></div>
-				                            <h4><small class="text-muted">Modified time</small></h4>
-				                          </div>
-				                          <div class="col-sm-2">
-				                          	<h4><span class="label label-default">Username</span></h4><h4>
-				                          	<a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
-				                          </div> 
-				                        </div>    
-				                        <div class="row divider">    
-				                           <div class="col-sm-12"><hr></div>
+				                        <div class="col-sm-12 page-header" id="reviews">
+					                        <div class="row">    
+					                          <div class="col-sm-10">
+					                            <h3>Review title</h3>
+			                            		<form>
+									  				<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
+							              		</form>
+											    <script>
+												  document.getElementById('input-1').value= 4;
+											    </script>
+					                            <div class="well well-sm"><strong>Review content</strong></div>
+					                            <h4><small class="text-muted">Modified time</small></h4>
+					                          </div>
+					                          <div class="col-sm-2">
+					                          	<h4><span class="label label-default">Username</span></h4><h4>
+					                          	<a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
+					                          </div> 
+					                        </div>    
+					                        <hr>
+					                        <!-- one review end -->
+					               			<!-- one review -->
+					                        <div class="row">    
+					                          <div class="col-sm-10">
+					                            <h3>Review title</h3>
+			                            		<form>
+									  				<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
+							              		</form>
+											    <script>
+												  document.getElementById('input-1').value= 4;
+											    </script>
+					                            <div class="well well-sm"><strong>Review content</strong></div>
+					                            <h4><small class="text-muted">Modified time</small></h4>
+					                          </div>
+					                          <div class="col-sm-2">
+					                          	<h4><span class="label label-default">Username</span></h4><h4>
+					                          	<a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
+					                          </div> 
+					                        </div>
 				                        </div>
 				                        <!-- one review end -->
-				               			<!-- one review -->
-				                        <div class="row">    
-				                          <div class="col-sm-10">
-				                            <h3>Review title</h3>
-		                            		<form>
-								  				<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-						              		</form>
-										    <script>
-											  document.getElementById('input-1').value= 4;
-										    </script>
-				                            <div class="well well-sm"><strong>Review content</strong></div>
-				                            <h4><small class="text-muted">Modified time</small></h4>
-				                          </div>
-				                          <div class="col-sm-2">
-				                          	<h4><span class="label label-default">Username</span></h4><h4>
-				                          	<a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
-				                          </div> 
-				                        </div>
-				                        <!-- one review end -->
-				                        <div class="row">
-			                          		<div id="paginator" class="page-header text-muted divider text-center">Paginator</div>
+				                        <div class="row page-header text-center">
+							            	<ul class="pagination">
+											  <li><a href="#">&laquo;</a></li>
+											  <li><a href="#">1</a></li>
+											  <li><a href="#">2</a></li>
+											  <li><a href="#">3</a></li>
+											  <li><a href="#">4</a></li>
+											  <li><a href="#">5</a></li>
+											  <li><a href="#">&raquo;</a></li>
+											</ul>
+											<!-- click http://getbootstrap.com/components/ for more usage -->
 				                       	</div>                   
 				                    </div><!-- /col-9 -->
 				                </div><!-- /padding -->
@@ -160,8 +164,7 @@
     				</div>
 				</div>
           	</div>
-          </div>  
-        </div>
+          </div>
 
 		<div id="footer">
 		  <div class="container">
