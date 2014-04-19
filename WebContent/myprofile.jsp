@@ -91,17 +91,25 @@
 			       <div class="col-xs-8">
 			          <h6 id = "restId"><%=restObj.name %></h6>
 			          <p class="">Category: <span id="categories"><%=restObj.getCategories() %></span></p>
-			           <input id="input-1" type="number" class="rating" data-readonly="true" 
-			           		value="<%=review.getRating()%>" data-size="xs" data-show-clear="false" data-show-caption="false">
-			           <p id="reviewContent" class="">
-				        	<%=review.getReview() %>
-				       </p>
+			       
 			       </div>
 			       <div class="col-xs-4">
 			       	<br />
 			          <p id="restAddress" class=""><%=restObj.getAddress()%></p>
 			       </div>
 		        </div>
+		        <div class="col-xs-8">
+		        <input id="input-1" type="number" class="rating" data-readonly="true" 
+			           		value="<%=review.getRating()%>" data-size="xs" data-show-clear="false" data-show-caption="false">
+			    </div>
+		        <div class="row">
+		            <div class="col-xs-12">       
+			           <p id="reviewContent" class="">
+				        	<%=review.getReview() %>
+				       </p>
+		            </div>
+		        </div>
+		        <hr class="">
 		         <% } %>
 				
 		      </div>
