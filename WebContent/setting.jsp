@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="service.*"%>
 
 <!DOCTYPE html>
 	<head>
@@ -28,6 +28,7 @@
 		<%@include file="/part/navbar.jsp" %>
 		<% 
 			User loginedUser = (User)request.getSession().getAttribute("user");
+				
 			String maleChecked = "";
 			String femaleChecked = "";
 			
@@ -59,10 +60,11 @@
 	 						</div>
 	 						<div class="row">
 		 						<div class="col-md-6">
-		            				<p width="45%" height="26" align="right">New photo url:</p>											
+		            				<p width="45%" height="26" align="right">Photo url:</p>											
 		 						</div>
 		 						<div class="col-md-6">
-			                		<input id="photo_url" name="photo_url" class="form-control" />
+			                		<input id="photo_url" name="photo_url" class="form-control" 
+			                		value="<%=loginUser.getPhoto() %>"/>
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -81,15 +83,6 @@
 		 						<div class="col-md-6">
 									<input id="last_name" name="last_name" class="form-control"
 									value="<%=loginedUser.getLastName() %>" />
-		 						</div>
-	 						</div>
-	 						<div class="row">
-		 						<div class="col-md-6">
-	 								<p width="45%" height="26" align="right">Email:</p>	
-		 						</div>
-		 						<div class="col-md-6">
-									<input type="email" name="signup_email" class="form-control" 
-									value="<%=loginedUser.getEmail() %>" id="signup_email" />
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -119,7 +112,7 @@
 	 						</div>
 	 						<div class="row">
 		 						<div class="col-md-6">
-									<p width="45%" height="26" align="right">Repest Password:</p>	 							 						
+									<p width="45%" height="26" align="right">Repeat Password:</p>	 							 						
 		 						</div>
 		 						<div class="col-md-6">
 									<input id="repeat_pwd" name="repeat_pwd" class="form-control" type="password" />

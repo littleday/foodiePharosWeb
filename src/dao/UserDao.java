@@ -80,18 +80,19 @@ public class UserDao {
 	}
 	
 	
-	public Boolean updateUser(User user){
+	public User updateUser(User user){
 		EntityManager em = factory.createEntityManager();
-		Boolean returnVal = true;
-
+		User returnVal = null;
+		
 		try {
 			em.getTransaction().begin();
 			em.merge(user);
 			//em.flush();
 			em.getTransaction().commit();
+			returnVal = user;
 		} catch (Exception e) {
 			e.printStackTrace();
-			returnVal = false;
+			returnVal = null;
 		} finally {
 			em.close();
 		}

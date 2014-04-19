@@ -100,23 +100,20 @@ public class Service {
 	}
 	
 	//Passed test, 3/24/2014
-	public Boolean updateUserProfile(String username, String password, String email, 
+	public User updateUserProfile(String username, String password, String email, 
 			String photo, String firstName, String lastName, String gender){
 		UserDao dao = new UserDao();
 		User user = dao.findUserByPk(username);
 		
-		if(user == null){
-			return false; 
-		}else{
-			user.setPassword(password);
-			user.setEmail(email);
-			user.setPhoto(photo);
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setGender(gender);
-			
-			return dao.updateUser(user);
-		}
+		user.setPassword(password);
+		user.setEmail(email);
+		user.setPhoto(photo);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setGender(gender);
+		
+		return dao.updateUser(user);
+		
 	}
 	
 	//Passed test, 3/24/2014
