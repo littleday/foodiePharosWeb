@@ -35,13 +35,20 @@
 			 			<div class="col-md-2">
 			 			</div>
 			 			<div class="col-md-6">
-		 					<div class="row">
+		 					<div class="row" style="padding-bottom:10px;">
 		 						<div class="col-md-6">
-				            		<p width="45%" height="26" align="right">Photo:</p> 							
+				            		<p width="45%" height="26" align="right"> Current Photo:</p> 							
 		 						</div>
 		 						<div class="col-md-6">
 		 							<img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="" width="45%">
-					            	<input type="file" name="photo" style="width:252px; margin-top: 2px; margin-bottom: 5px;">
+		 						</div>
+	 						</div>
+	 						<div class="row">
+		 						<div class="col-md-6">
+		            				<p width="45%" height="26" align="right">New photo url:</p>											
+		 						</div>
+		 						<div class="col-md-6">
+			                		<input id="first_name" name="first_name" class="form-control" />
 		 						</div>
 	 						</div>
 	 						<div class="row">

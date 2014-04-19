@@ -81,7 +81,7 @@ visibility:hidden;
                     <ul class="dropdown-menu">
                     <li><a href="${pageContext.request.contextPath}/myprofile.jsp">My Profile</a></li>
                     <li><a href="${pageContext.request.contextPath}/myloves.jsp">My Loves</a></li>
-                    <li><a href="fakelink">My Settings</a></li>
+                    <li><a href="${pageContext.request.contextPath}/setting.jsp">My Settings</a></li>
                     <li class="highlighted"><a href="${pageContext.request.contextPath}/SignoutServlet">Logout</a></li>
                     </ul>
                 </li>  

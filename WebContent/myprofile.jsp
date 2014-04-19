@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="entity.*, java.util.*"%>
+    pageEncoding="utf-8" import="entity.*, java.util.*, myutil.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -29,11 +29,11 @@
 
 	<body>	
 		<%@include file="/part/navbar.jsp" %>
-		<%
-			User loginedUser = (User) request.getSession().getAttribute("user");
+		<%  User loginedUser = (User) request.getSession().getAttribute("user");
+				
 			if(loginedUser == null){
+				// won't work
 				request.getRequestDispatcher("index.jsp").forward(request, response);
-			
 			}
 			
 			List<Review> reviews = loginedUser.getReviewList();
@@ -83,29 +83,29 @@
 		         <hr class="">
 		         
 		      
+		         <% for(Review review: reviews) { 
+		         		RestaurantTool restTool = new RestaurantTool(review.getRestaurant());
+		         		RestaurantObject restObj = restTool.getRestObj(); %>
 		         
 		        <div class="row">
 			       <div class="col-xs-8">
-			          <h6 id = "restId">Mike's Pastry</h6>
-			          <p class="">Category: <span id="categories">Chinese, American</span></p>
+			          <h6 id = "restId"><%=restObj.name %></h6>
+			          <p class="">Category: <span id="categories"><%=restObj.getCategories() %></span></p>
+			           <input id="input-1" type="number" class="rating" data-readonly="true" 
+			           		value="<%=review.getRating()%>" data-size="xs" data-show-clear="false" data-show-caption="false">
+			           <p id="reviewContent" class="">
+				        	<%=review.getReview() %>
+				       </p>
 			       </div>
 			       <div class="col-xs-4">
-			          <p id="restAddress" class="">300 Hanover St Boston, MA 02113 (617) 742-3050</p>
+			       	<br />
+			          <p id="restAddress" class=""><%=restObj.getAddress() %></p>
 			       </div>
-			       <div class = "pull-left">
-			           <input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-				       <p id="reviewContent" class="">
-				        	Hello this is my first review!!
-				       </p>
-				   </div>   
-				    
 			       <p class="pull-right">
 			         <a href="#" class="">More Reviews&gt;&gt;</a>
 			       </p>
-		          
 		        </div>
-		        
-		        
+		         <% } %>
 				
 		      </div>
 		
