@@ -27,18 +27,18 @@
 		<![endif]-->
 	</head>
 	<body>	
-<%@include file="/part/navbar.jsp" %>
+		<%@include file="/part/navbar.jsp" %>
         	
         <div class = "container">
          <div id="header">
 		  <div class="container">
            <div class="wrapper">
     <div class="box">
-        <div class="row">       
+        <div class="row" style="margin-top: -90px;">       
             <!-- sidebar -->
-            <div class="column col-sm-3" id="sidebar">
+            <div class="column col-sm-3" id="sidebar" style="margin-top: -25px;">
                 <ul class="nav">
-                    <li class="active"><strong>Restaurant name</strong></li>
+                    <li class="active"><h1>Restaurant name</h1></li>
                     <li>
                     <form>
 					  <input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
@@ -59,6 +59,18 @@
                     <li><button name="addFavor"class="btn btn-success" onClick=""><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
                     </li>           
                 </ul>
+                <div class="row text-center page-header">
+                	<h4>Related 1</h4>
+                    <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
+                </div>
+                <div class="row text-center divider">
+                	<h4>Related 2</h4>
+                    <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
+                </div>
+                <div class="row text-center page-header">
+                	<h4>Related 3</h4>
+                    <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
+                </div>
             </div>
             <!-- /sidebar -->
           
@@ -68,8 +80,8 @@
                     <div class="full col-sm-9">
                     <div class = "col-sm-12" id="addReview">
                          <div class="col-sm-12" id="reviews">  
-                          <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-dashboard"></i> Add Your Review</strong>
-                          </div>
+	                          <div class="page-header text-muted"><strong><i class="glyphicon glyphicon-star"></i> Add Your Review</strong>
+	                          </div>
                          <form  action="SettingServlet" method="post">
 							<div class="row">
 			 					<div class="col-sm-2">			 						
@@ -93,7 +105,7 @@
                     </div>
                         <!-- content -->
                         <div class="col-sm-12" id="reviews">  
-                          <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-dashboard"></i> Recent Reviews</strong>
+                          <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-comment"></i> Recent Reviews</strong>
                           </div>
                         </div>                
                         <!--/reviews-->
@@ -120,16 +132,16 @@
                            <div class="col-sm-12"><hr></div>
                         </div>
                         <!-- one review end -->
-               <!-- one review -->
+               			<!-- one review -->
                         <div class="row">    
                           <div class="col-sm-10">
                             <h3>Review title</h3>
                             <form>
-					  <input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
+					  			<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
 				              </form>
-				      <script>
-					  document.getElementById('input-1').value= 4;
-				      </script>
+						      <script>
+							  document.getElementById('input-1').value= 4;
+						      </script>
                             <div class="well well-sm"><strong>Review content</strong></div>
                             <small class="text-muted">Modified time</small>
                             </h4>
@@ -142,24 +154,18 @@
                         <!-- one review end -->
                         
                         <div class="col-sm-12">
-                          <div class="page-header text-muted divider">More pictures
+                          <div class="page-header text-muted divider text-center">
+                          	<ul class="pagination">
+							  <li><a href="#">&laquo;</a></li>
+							  <li><a href="#">1</a></li>
+							  <li><a href="#">2</a></li>
+							  <li><a href="#">3</a></li>
+							  <li><a href="#">4</a></li>
+							  <li><a href="#">5</a></li>
+							  <li><a href="#">&raquo;</a></li>
+							</ul>
                           </div>
-                        </div>
-                      
-                        <div class="row">    
-                          <div class="col-sm-4 text-center">
-                            <h4>Related 1</h4>
-                            <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
-                          </div>
-                          <div class="col-sm-4 text-center">
-                            <h4>Related 2</h4>
-                            <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
-                          </div>
-                          <div class="col-sm-4 text-center">
-                            <h4>Related 3</h4>
-                            <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
-                          </div>
-                        </div>                           
+                        </div>                   
                     </div><!-- /col-9 -->
                 </div><!-- /padding -->
             </div>
