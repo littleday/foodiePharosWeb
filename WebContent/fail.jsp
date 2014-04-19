@@ -32,7 +32,7 @@
 		    <div class="container">
 		        <div class="row">
 		            <div class="col-lg-2"></div>
-		            <div class = "col-lg-8 text-center"><h1>We are sorry you have an error to register</h1></div>
+		            <div class = "col-lg-8 text-center"><h1><%=request.getAttribute("failMessage") %></h1></div>
 		        </div>
 			    <div class="row text-center">
 			        <div class="col-lg-2"></div>

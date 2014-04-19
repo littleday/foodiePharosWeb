@@ -99,11 +99,8 @@
 			       </div>
 			       <div class="col-xs-4">
 			       	<br />
-			          <p id="restAddress" class=""><%=restObj.getAddress() %></p>
+			          <p id="restAddress" class=""><%=restObj.getAddress()%></p>
 			       </div>
-			       <p class="pull-right">
-			         <a href="#" class="">More Reviews&gt;&gt;</a>
-			       </p>
 		        </div>
 		         <% } %>
 				

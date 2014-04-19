@@ -26,7 +26,21 @@
 
 	<body>
 		<%@include file="/part/navbar.jsp" %>
-	
+		<% 
+			User loginedUser = (User)request.getSession().getAttribute("user");
+			String maleChecked = "";
+			String femaleChecked = "";
+			
+			if(loginedUser.getGender().toLowerCase().equals("female")){
+				maleChecked = "";
+				femaleChecked = "checked";
+			
+			}else{
+				maleChecked = "checked";
+				femaleChecked = "";
+			}
+		%>
+		
 		<div id="header">
 			<div class="container">
 				<h1 style="margin-top: -70px;">Setting</h1>
@@ -40,7 +54,7 @@
 				            		<p width="45%" height="26" align="right"> Current Photo:</p> 							
 		 						</div>
 		 						<div class="col-md-6">
-		 							<img src="http://api.randomuser.me/0.3/portraits/men/2.jpg" class="" width="45%">
+		 							<img src="<%=loginedUser.getPhoto() %>" class="" width="45%">
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -48,7 +62,7 @@
 		            				<p width="45%" height="26" align="right">New photo url:</p>											
 		 						</div>
 		 						<div class="col-md-6">
-			                		<input id="first_name" name="first_name" class="form-control" />
+			                		<input id="photo_url" name="photo_url" class="form-control" />
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -56,7 +70,8 @@
 		            				<p width="45%" height="26" align="right">First Name:</p>											
 		 						</div>
 		 						<div class="col-md-6">
-			                		<input id="first_name" name="first_name" class="form-control" />
+			                		<input id="first_name" name="first_name" class="form-control"
+			                		 value="<%=loginedUser.getFirstName() %>" />
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -64,7 +79,8 @@
 		 							<p width="45%" height="26" align="right">Last Name:</p>
 		 						</div>
 		 						<div class="col-md-6">
-									<input id="last_name" name="last_name" class="form-control" />
+									<input id="last_name" name="last_name" class="form-control"
+									value="<%=loginedUser.getLastName() %>" />
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -72,7 +88,8 @@
 	 								<p width="45%" height="26" align="right">Email:</p>	
 		 						</div>
 		 						<div class="col-md-6">
-									<input type="email" name="signup_email" class="form-control" id="signup_email" />
+									<input type="email" name="signup_email" class="form-control" 
+									value="<%=loginedUser.getEmail() %>" id="signup_email" />
 		 						</div>
 	 						</div>
 	 						<div class="row">
@@ -80,8 +97,8 @@
 									<p width="45%" height="26" align="right">Gender:</p>
 		 						</div>
 		 						<div class="col-md-6">
-		 							<input type="radio" id="sex" name="sex" value="1" checked>Male
-					                <input type="radio" id="sex" name="sex" value="2">Female
+		 							<input type="radio" id="sex" name="sex" value="1" <%=maleChecked%>>Male
+					                <input type="radio" id="sex" name="sex" value="2" <%=femaleChecked%>>Female
 		 						</div>
 	 						</div>
 	 						<div class="row">

@@ -17,7 +17,13 @@ public class RestaurantObject{
 	public String snippet_text;
 	
 	public String getCategories(){
-		return categories[0][0] + ", " + categories[1][0];
+		StringBuffer sb = new StringBuffer();
+		sb.append(categories[0][0]);
+		
+		for(int i = 1; i < categories.length; ++i){
+			sb.append(", " + categories[i][0]);
+		}
+		return sb.toString();
 	}
 	
 	public String getAddress(){

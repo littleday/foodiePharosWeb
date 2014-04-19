@@ -33,8 +33,8 @@ public class SignupServlet extends HttpServlet {
 		
 		// Register failed
 		if(user == null){
-			//response.getWriter().write("<script>alert(\"Register failed!\");</script>");
-			request.getRequestDispatcher("registerFail.jsp").forward(request, response);
+			request.setAttribute("failMessage", "We are sorry you have an error to register");
+			request.getRequestDispatcher("fail.jsp").forward(request, response);
 		}else{
 		
 			//after register, jump back to home page

@@ -37,7 +37,8 @@ public class SigninServlet extends HttpServlet {
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			
 		}else{
-			request.getRequestDispatcher("loginFail.jsp").forward(request, response);
+			request.setAttribute("failMessage", "Please check your username && password and login again");
+			request.getRequestDispatcher("fail.jsp").forward(request, response);
 			
 		}
 			
