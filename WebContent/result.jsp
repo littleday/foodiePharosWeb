@@ -53,6 +53,7 @@
             parameters = [];
             parameters.push(['term', terms]);
             parameters.push(['location', near]);
+            parameters.push(['category_filter', 'food']);
             parameters.push(['callback', 'cb']);
             parameters.push(['oauth_consumer_key', auth.consumerKey]);
             parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
