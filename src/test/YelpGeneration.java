@@ -81,8 +81,9 @@ public class YelpGeneration {
 					rating = Double.parseDouble(rate.attr("content").toString());
 					Element ratecount = subDoc.select("span[itemprop=reviewCount]").get(0);
 					ratingnumber = Integer.parseInt(ratecount.text());
-					Element bizId = subDoc.select("meta[name=yelp-biz-id]").get(0);
-					businessId = bizId.attr("content").toString();
+/*					Element bizId = subDoc.select("meta[name=yelp-biz-id]").get(0);
+					businessId = bizId.attr("content").toString();*/
+					businessId = links.get(i).substring(5).trim();
 					Element post = subDoc.select("span[itemprop=postalCode]").get(0);
 					zipCode = post.text();
 					for(int m=0;m<categories.size();m++){
@@ -93,7 +94,7 @@ public class YelpGeneration {
 					System.out.println(businessId);
 					System.out.println(zipCode);
 					System.out.println("------------------------");
-					//Use service to add restaurants to database 
+					//Use service to add restaurants to database 	
 					Restaurant rest = new Restaurant();
 					rest.setBusinessId(businessId);
 					String[] category = new String[categories.size()];
@@ -119,6 +120,7 @@ public class YelpGeneration {
 					{
 						i--;
 					}
+					
 				}
 			}
 			catch (Exception e){
