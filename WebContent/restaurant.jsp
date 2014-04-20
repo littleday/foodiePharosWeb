@@ -101,11 +101,12 @@
 								 					</div>
 								 					<div class="col-sm-10">
 					     			      			    <textarea name="reviewContent"rows="4" cols="50"></textarea>
-					                                    <button name = "reviewSubmit"class="btn btn-primary" onClick="">Submit</button>
-					                                    <button bane = "reviewReset" class="btn btn-inverse" onClick="">Reset</button> 
+					                                    <button name = "reviewSubmit"class="btn btn-primary" >Submit</button>
+					                                    <button name = "reviewReset" type="reset" class="btn btn-inverse">Reset</button> 
 								 					</div>
 							 					</div>
-						 					</form> 	
+						 					</form> 
+						 					  	
 				                    	</div>
 				                        <!-- end addReview -->            
 				                        <!--/reviews-->      
