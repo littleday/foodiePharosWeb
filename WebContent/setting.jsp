@@ -32,13 +32,13 @@
 			String maleChecked = "";
 			String femaleChecked = "";
 			
-			if(loginedUser.getGender().toLowerCase().equals("female")){
-				maleChecked = "";
-				femaleChecked = "checked";
-			
-			}else{
+			if(loginedUser.getGender() == null || loginedUser.getGender().equals("") || loginedUser.getGender().toLowerCase().equals("male")){
 				maleChecked = "checked";
 				femaleChecked = "";
+			
+			}else{
+				maleChecked = "";
+				femaleChecked = "checked";
 			}
 		%>
 		
