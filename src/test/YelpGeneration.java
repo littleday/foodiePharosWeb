@@ -44,7 +44,7 @@ public class YelpGeneration {
 			{
 				ArrayList<String> links = new ArrayList<String>();
 				System.out.println(curURL);
-				doc = Jsoup.connect(curURL).timeout(60*1000).get();
+				doc = Jsoup.connect(curURL).timeout(30*1000).get();
 				Elements bizs = doc.select("a[class=biz-name]");
 				//System.out.println(bizs.size());
 				if(bizs != null)
@@ -61,7 +61,7 @@ public class YelpGeneration {
 					}
 				for(int i =0; i<links.size();i++){
 					String fullUrl = baseURl + links.get(i).toString();
-					Document subDoc = Jsoup.connect(fullUrl).timeout(60*1000).get();
+					Document subDoc = Jsoup.connect(fullUrl).timeout(30*1000).get();
 					ArrayList<String> categories  = new ArrayList<String>(); // The Categories
 					double rating;
 					int ratingnumber;
