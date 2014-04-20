@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="entity.*,dao.*, java.util.*, myutil.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -30,6 +30,11 @@
 	
 	<body>	
 		<%@include file="/part/navbar.jsp" %>
+		<%
+		String bizId = request.getParameter("id");
+		RestaurantDao dao = new RestaurantDao();
+		Restaurant res = dao.findRestaurantByBusinessId(bizId); 		
+		%>
         	
          <div id="header">
 	  		<div class="container">
@@ -39,7 +44,7 @@
 				            <!-- sidebar -->
 				            <div class="column col-sm-3" id="sidebar" style="margin-top: -25px;">
                 				<ul class="nav">
-				                    <li class="active"><h1>Restaurant name</h1></li>
+				                    <li class="active"><h1><%=bizId %></h1></li>
 				                    <li>
 				                    <form>
 									<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
