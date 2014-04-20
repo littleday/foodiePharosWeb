@@ -3,7 +3,7 @@ package myutil;
 public class LocationObject{
 	
 	private String city;
-	private String[] display_address;
+	public String[] display_address;
 	private String[] neighborhoods;
 	private String postal_code;
 	private String country_code;
