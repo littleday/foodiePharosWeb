@@ -58,18 +58,28 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
+                      <td>Breakfast</td>
+                      <td>Sun wakes us up. What do you want to eat now?</td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
+                      <td>Brunch</td>
+                      <td>A breakfast&lunch on Sundays.</td>
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td>Larry</td>
-                      <td>the Bird</td>
+                      <td>Lunch</td>
+                      <td>Midday meal.</td>
+                    </tr>
+                     <tr>
+                      <td>4</td>
+                      <td>Tea</td>
+                      <td>Happy time to have a afternoon tea. Enjoy this with your family and friends.</td>
+                    </tr>
+                     <tr>
+                      <td>5</td>
+                      <td>Dinner</td>
+                      <td>The main and most formal meal of one day.</td>
                     </tr>
                   </tbody>  
                   </table>

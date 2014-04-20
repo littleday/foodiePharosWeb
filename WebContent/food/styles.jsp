@@ -58,19 +58,30 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
+                      <td>Fusion</td>
+                      <td>Cuisine that combines elements of different culinary traditions.</td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
+                      <td>Haute</td>
+                      <td>Cuisine of "high level" establishments and meticulous preparation. </td>
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td>Larry</td>
-                      <td>the Bird</td>
+                      <td>Nouvelle</td>
+                      <td>Cuisine of lighter, more delicate dishes and presentaion.</td>
                     </tr>
+                     <tr>
+                      <td>4</td>
+                      <td>Vegetarian</td>
+                      <td>Fresh, healthy and natural food.</td>
+                    </tr>
+                     <tr>
+                      <td>5</td>
+                      <td>Fast food</td>
+                      <td>Quick and convenient food.</td>
+                    </tr>
+                    
                   </tbody>  
                   </table>
                </div>  

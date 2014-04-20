@@ -58,18 +58,43 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Mark</td>
-                      <td>Otto</td>
+                      <td>American</td>
+                      <td>North American cuisines and South American cuisines.</td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
+                      <td>Asian</td>
+                      <td>Like Chinese dishes? Or Japan? Or Korean? Or Thailand? Or more asian cuisines?</td>
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td>Larry</td>
-                      <td>the Bird</td>
+                      <td>European</td>
+                      <td>French, Austrian or German? More is here.</td>
+                    </tr>
+                     <tr>
+                      <td>4</td>
+                      <td>Oceanian</td>
+                      <td>Australia, New Zealand, Tasmania and other islands throughout Oceania.</td>
+                    </tr>
+                     <tr>
+                      <td>5</td>
+                      <td>African</td>
+                      <td>Combination of locally available fruits, cereal grains and vegetables.</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Mediterranean</td>
+                      <td>Food from Mediterranean Sea such as Greek cuisine.</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>Middle Eastern</td>
+                      <td>Lamb, olive oil, lemons, peppers and rice. You can have a try.</td>
+                    </tr>
+                     <tr>
+                      <td>8</td>
+                      <td>Global</td>
+                      <td>The world has many many delicious food.</td>
                     </tr>
                   </tbody>  
                   </table>
