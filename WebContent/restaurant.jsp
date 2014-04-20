@@ -37,6 +37,8 @@
 		RestaurantTool restTool = new RestaurantTool(res);
 		RestaurantObject restObj = restTool.getRestObj();
 		List<Review> reviews = res.getReviewList();
+		session.setAttribute("restaurantId", res.getId());
+		session.setAttribute("bizId", bizId);
 		%>
         <div class="container">	
          <div id="header">
@@ -84,7 +86,7 @@
 			                         	<div class="col-sm-12" id="addReview">  
 					                          <div class="page-header text-muted"><strong><i class="glyphicon glyphicon-star"></i> Add Your Review</strong>
 					                          </div>
-					                         <form  action="SettingServlet" method="post">
+					                         <form  action="ReviewServlet" method="post">
 												<div class="row">
 								 					<div class="col-sm-2">			 						
 									            		<p width="45%" height="26" align="right">Rating:</p> 							
@@ -98,16 +100,18 @@
 									            		<p width="45%" height="26" align="right">Review:</p> 							
 								 					</div>
 								 					<div class="col-sm-10">
-					     			      				<textarea name="reviewContent"rows="4" cols="50"></textarea>
-					                                <button name = "reviewSubmit"class="btn btn-primary" onClick="">Submit</button>
-					                               <button bane = "reviewReset" class="btn btn-inverse" onClick="">Reset</button> 
+					     			      			    <textarea name="reviewContent"rows="4" cols="50"></textarea>
+					                                    <button name = "reviewSubmit"class="btn btn-primary" onClick="">Submit</button>
+					                                    <button bane = "reviewReset" class="btn btn-inverse" onClick="">Reset</button> 
 								 					</div>
 							 					</div>
 						 					</form> 	
 				                    	</div>
 				                        <!-- end addReview -->            
 				                        <!--/reviews-->      
-				                        <div class="col-sm-12 page-header" id="reviews">
+				                        <div class="col-sm-12" id="reviews">
+				                        <div class="page-header text-muted divider"><strong><i class="glyphicon glyphicon-dashboard"></i> Recent Reviews</strong>
+                          </div>
 				                        <%for(Review review: reviews) {  %>
 				                         <!-- one review -->
 					                        <div class="row">    
@@ -119,11 +123,11 @@
 					                            <h4><small class="text-muted">Last Modified:<%=review.getLastModifyDate() %></small></h4>
 					                          </div>
 					                          <div class="col-sm-2">
-					                          	<h4><span class="label label-default"><%=review.getUser().getFirstName() %></span></h4><h4>
+					                          	<h4><span class="label label-default"><%=review.getUser().getFirstName() %></span></h4>
 					                          	<a href="#" class="pull-right"><img src=<%=review.getUser().getPhoto() %> class="img-circle"></a>
 					                          </div> 
 					                        </div>    
-					                        <hr>
+		 		                            <hr>
 					                        <!-- one review end -->
 					                <%} %>
 					                        
