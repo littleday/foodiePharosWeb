@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="entity.*,dao.*, java.util.*, myutil.*"%>
+    pageEncoding="utf-8" import="entity.*,dao.*, java.util.*, myutil.*,com.google.gson.Gson, service.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -34,11 +34,18 @@
 		String bizId = request.getParameter("id");
 		RestaurantDao dao = new RestaurantDao();
 		Restaurant res = dao.findRestaurantByBusinessId(bizId); 
-		RestaurantTool restTool = new RestaurantTool(res);
-		RestaurantObject restObj = restTool.getRestObj();
-		List<Review> reviews = res.getReviewList();
-		session.setAttribute("restaurantId", res.getId());
-		session.setAttribute("bizId", bizId);
+    	if (res == null)
+		{
+			// Add restaurant to database and search again
+			AddResByYelp ay = new AddResByYelp();
+			ay.addRestaurantByYelp(bizId);
+			res = dao.findRestaurantByBusinessId(bizId);
+		} 
+			RestaurantTool restTool = new RestaurantTool(res);
+			RestaurantObject restObj = restTool.getRestObj();
+			List<Review> reviews = res.getReviewList();
+			session.setAttribute("restaurantId", res.getId());
+			session.setAttribute("bizId", bizId);
 		%>
         <div class="container">	
          <div id="header">

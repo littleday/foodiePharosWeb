@@ -27,15 +27,15 @@ public class RestaurantTool {
 	}
 	
 	
-//	public static void main(String[] args) {
-//		Restaurant rest = new Restaurant();
-//		rest.setBusinessId("RuCvHXtZKfkujxIWYpu1Gg");
-//		
-//		RestaurantTool tool = new RestaurantTool(rest);
-//		System.out.println( tool.getRestObj().id );
-//		System.out.println( tool.getRestObj().getCategories() );
+/*	public static void main(String[] args) {
+		Restaurant rest = new Restaurant();
+		rest.setBusinessId("RuCvHXtZKfkujxIWYpu1Gg");
+		
+		RestaurantTool tool = new RestaurantTool(rest);
+		System.out.println( tool.getRestObj().id );
+		System.out.println( tool.getRestObj().getCategories() );
 //		System.out.println( tool.getRestObj().getLocation()  );
-//	}
+	}*/
 
 }
 

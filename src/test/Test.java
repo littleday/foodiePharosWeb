@@ -3,6 +3,7 @@ package test;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 
 import dao.AdministratorDao;
 import dao.LocationDao;
@@ -26,11 +27,60 @@ public class Test {
 		User user = service.getUserProfile("liyang920407@hotmail.com");
 		System.out.println(user.getFavoriteRestaurants().size());
 		*/
-		RestaurantDao rd = new RestaurantDao();
-		Restaurant rs = new Restaurant();
-		rs = rd.findRestaurantByBusinessId("piperi-mediterranean-grill-boston");
-		System.out.println(rs.getId());
-		System.out.println(rs.getRating());
+		String bizId = "polcaris-coffee-boston";
+		Restaurant newRes = new Restaurant();
+		newRes.setBusinessId(bizId);
+		RestaurantTool newTool = new RestaurantTool(newRes);
+		RestaurantObject newRestObj = newTool.getRestObj();
+		newRes.setCategory(newRestObj.getCategoriesArray());
+		newRes.setRating(newRestObj.rating);
+		newRes.setRatingNumber(newRestObj.review_count);
+		Location local = new Location();
+		local.setCountrycode(newRestObj.location.getCountry_code());
+		local.setStatecode(newRestObj.location.getState_code());
+		LocationPk lp = new LocationPk();
+		lp.setCity(newRestObj.location.getCity());
+		lp.setZipcode(newRestObj.location.getPostal_code());
+		local.setLocationPk(lp);
+		Service ser = new Service();
+		ser.addRestaurant(local, newRes);	
+		// Add restaurant to database and search again
+		RestaurantDao dao = new RestaurantDao();
+		Restaurant res = dao.findRestaurantByBusinessId(bizId); 
+		System.out.println(res.getId());
+		System.out.println(res.getBusinessId());
+		//System.out.println(res.getCategory());
+		for(int i =0; i<res.getCategory().length;i++)
+		{
+			System.out.println("The category:"+res.getCategory()[i]);
+		}
+		System.out.println(res.getRating());
+		System.out.println(res.getRatingNumber());
+		/*for (int i = 0; i <newRes.getCategory().length;i++)
+		{
+			System.out.println(newRes.getCategory()[i]);
+		}*/
+		//System.out.println(newRes.getCategory());
+
+		/*
+		Location local = new Location();
+		local.setCountrycode(newRestObj.location.getCountry_code());
+		local.setStatecode(newRestObj.location.getState_code());
+		LocationPk lp = new LocationPk();
+		lp.setCity(newRestObj.location.getCity());
+		lp.setZipcode(newRestObj.location.getPostal_code());
+		local.setLocationPk(lp);
+		Service ser = new Service();
+		ser.addRestaurant(local, newRes);	
+		// Add restaurant to database and search again
+		RestaurantDao dao = new RestaurantDao();
+		Restaurant res = dao.findRestaurantByBusinessId(bizId); 
+		System.out.println(res.getId());
+		System.out.println(res.getBusinessId());
+		System.out.println(res.getCategory());
+		System.out.println(res.getRating());
+		System.out.println(res.getRatingNumber());
+		*/
 		
 		
 	}
