@@ -33,9 +33,12 @@
 		<%
 		String bizId = request.getParameter("id");
 		RestaurantDao dao = new RestaurantDao();
-		Restaurant res = dao.findRestaurantByBusinessId(bizId); 		
+		Restaurant res = dao.findRestaurantByBusinessId(bizId); 
+		RestaurantTool restTool = new RestaurantTool(res);
+		RestaurantObject restObj = restTool.getRestObj();
+		List<Review> reviews = res.getReviewList();
 		%>
-        	
+        <div class="container">	
          <div id="header">
 	  		<div class="container">
            		<div class="wrapper">
@@ -44,21 +47,17 @@
 				            <!-- sidebar -->
 				            <div class="column col-sm-3" id="sidebar" style="margin-top: -25px;">
                 				<ul class="nav">
-				                    <li class="active"><h1><%=bizId %></h1></li>
+				                    <li class="active"><h1><%=restObj.name %></h1></li>
 				                    <li>
-				                    <form>
-									<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-								    </form>
-								    <script>
-									  document.getElementById('input-1').value= 4;
-								    </script>
-				                    (reviews_count)
+				                     <input id="input-1" type="number" class="rating" data-readonly="true" 
+			           		value="<%=res.getRating() %>" data-size="xs" data-show-clear="false" data-show-caption="false">
+				                    (<%=res.getRatingNumber() %>)
 				                    </li>
                     				<li><img src="" class="res_image"></li>
 				                    <li><i class="glyphicon glyphicon-pencil"></i>  Address:</li>
-									<li>300 Hanover St Boston, MA 02113 (617) 742-3050</li>
+									<li><%=restObj.getAddress()%></li>
                     				<li><i class="glyphicon glyphicon-star"></i>  Category:</li>                  				
-                        			<li>Category 1, Category 2 & Category 3</li>
+                        			<li><%=restObj.getCategories() %></li>
                     				<hr>
                     				<li><button name="addFavor"class="btn btn-success" onClick=""><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
                     				</li>           
@@ -107,46 +106,27 @@
 						 					</form> 	
 				                    	</div>
 				                        <!-- end addReview -->            
-				                        <!--/reviews-->
-				                        <!-- one review -->
+				                        <!--/reviews-->      
 				                        <div class="col-sm-12 page-header" id="reviews">
+				                        <%for(Review review: reviews) {  %>
+				                         <!-- one review -->
 					                        <div class="row">    
 					                          <div class="col-sm-10">
-					                            <h3>Review title</h3>
-			                            		<form>
-									  				<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-							              		</form>
-											    <script>
-												  document.getElementById('input-1').value= 4;
-											    </script>
-					                            <div class="well well-sm"><strong>Review content</strong></div>
-					                            <h4><small class="text-muted">Modified time</small></h4>
+					                            <h3><%=review.getId() %></h3>
+			                            		 <input id="input-1" type="number" class="rating" data-readonly="true" 
+			           		value="<%=review.getRating() %>" data-size="xs" data-show-clear="false" data-show-caption="false">
+					                            <div class="well well-sm"><strong><%=review.getReview() %></strong></div>
+					                            <h4><small class="text-muted">Last Modified:<%=review.getLastModifyDate() %></small></h4>
 					                          </div>
 					                          <div class="col-sm-2">
-					                          	<h4><span class="label label-default">Username</span></h4><h4>
-					                          	<a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
+					                          	<h4><span class="label label-default"><%=review.getUser().getFirstName() %></span></h4><h4>
+					                          	<a href="#" class="pull-right"><img src=<%=review.getUser().getPhoto() %> class="img-circle"></a>
 					                          </div> 
 					                        </div>    
 					                        <hr>
 					                        <!-- one review end -->
-					               			<!-- one review -->
-					                        <div class="row">    
-					                          <div class="col-sm-10">
-					                            <h3>Review title</h3>
-			                            		<form>
-									  				<input id="input-1" type="number" class="rating" data-readonly="true" value="3" data-size="xs" data-show-clear="false" data-show-caption="false">
-							              		</form>
-											    <script>
-												  document.getElementById('input-1').value= 4;
-											    </script>
-					                            <div class="well well-sm"><strong>Review content</strong></div>
-					                            <h4><small class="text-muted">Modified time</small></h4>
-					                          </div>
-					                          <div class="col-sm-2">
-					                          	<h4><span class="label label-default">Username</span></h4><h4>
-					                          	<a href="#" class="pull-right"><img src="//placehold.it/100" class="img-circle"></a>
-					                          </div> 
-					                        </div>
+					                <%} %>
+					                        
 				                        </div>
 				                        <!-- one review end -->
 				                        <div class="row page-header text-center">
@@ -169,6 +149,7 @@
     				</div>
 				</div>
           	</div>
+          </div>
           </div>
 
 		<div id="footer">

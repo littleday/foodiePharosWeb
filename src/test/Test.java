@@ -28,7 +28,7 @@ public class Test {
 		*/
 		RestaurantDao rd = new RestaurantDao();
 		Restaurant rs = new Restaurant();
-		rs = rd.findRestaurantByBusinessId("RuCvHXtZKfkujxIWYpu1Gg");
+		rs = rd.findRestaurantByBusinessId("piperi-mediterranean-grill-boston");
 		System.out.println(rs.getId());
 		System.out.println(rs.getRating());
 		
