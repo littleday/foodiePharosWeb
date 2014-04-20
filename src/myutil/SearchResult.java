@@ -1,9 +1,11 @@
 package myutil;
 
+import java.util.List;
+
 public class SearchResult {
 	private Region region;
 	private int total;
-	private Business[] businessList;
+	private List<Business> businesses;
 	
 	public Region getRegion() {
 		return region;
@@ -17,11 +19,11 @@ public class SearchResult {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	public Business[] getBusinessList() {
-		return businessList;
+	public List<Business> getBusinessList() {
+		return businesses;
 	}
-	public void setBusinessList(Business[] businessList) {
-		this.businessList = businessList;
+	public void setBusinessList(List<Business> businesses) {
+		this.businesses = businesses;
 	}
 
 }
