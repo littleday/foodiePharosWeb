@@ -83,6 +83,16 @@ public class Yelp {
 		return response.getBody();
 	}
 	
+	public String getRestaurantsByLocation(String location, String sort) {
+		OAuthRequest request = new OAuthRequest(Verb.GET,
+				"http://api.yelp.com/v2/search");
+		request.addQuerystringParameter("sort", sort); //Sort mode: 0=Best matched (default), 1=Distance, 2=Highest Rated.
+		request.addQuerystringParameter("location", location);
+		this.service.signRequest(this.accessToken, request);
+		Response response = request.send();
+		return response.getBody();
+	}
+	
 
 	public String getBusiness(String id) {
 		OAuthRequest request = new OAuthRequest(Verb.GET,
@@ -100,12 +110,13 @@ public class Yelp {
 //		String token = "d9O9FMYi1UDeNhTX1BP87UP4Q82xEAKE";
 //		String tokenSecret = "c0KdpfZNXDcYu3lhhG6hMhq2hro";
 //
-//		Yelp yelp = new Yelp(consumerKey, consumerSecret, token, tokenSecret);
+//		Yelp yelp = new Yelp();
 //		String response = yelp.search("burritos", 30.361471, -87.164326);
 //		//String response2 = yelp.getBusiness("taco-bell-gulf-breeze");
 //		String response2 = yelp.getBusiness("RuCvHXtZKfkujxIWYpu1Gg");
 //		String response3 = yelp.searchByLocation("burritos", " Franccisco");
-//		
-//		System.out.println(response2);
+//		String response4 = yelp.getRestaurantsByLocation("Boston", "2");
+		
+//		System.out.println(response4);
 	}
 }
