@@ -54,7 +54,7 @@
 											%>
 											<tr>
 												<td><%= id %></td>
-												<td><a href="${pageContext.request.contextPath}/restaurant.jsp?id=<%=busi.getId()%>"><%=busi.getName() %></a></td>
+												<td><a href="#"><%= busi.getName() %></a></td>
 											</tr>
 											<%
 										}
