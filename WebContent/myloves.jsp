@@ -90,7 +90,7 @@
 		         
 		        <div class="row">
 		        <div class ="col-xs-8">
-		         <h6 id = "restId"><%=restObj.name %></h6>
+		         <h6 id = "restId"><a href="restaurant.jsp?id=<%=restObj.id%>"><%=restObj.name %></a></h6>
 			          <p class="">Category: <span id="categories"><%=restObj.getCategories() %></span></p>
 			           <p><input id="input-1" type="number" class="rating" data-readonly="true" 
 			           		value="<%=restObj.rating%>" data-size="xs" data-show-clear="false" data-show-caption="false">
