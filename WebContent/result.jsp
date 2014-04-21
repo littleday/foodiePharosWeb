@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="service.*"%>
 <!DOCTYPE html>
 <head>
 <title>FoodiePharos: Find your appetites here!</title>
@@ -144,7 +144,17 @@
 
 <%@include file="/part/navbar.jsp" %>
 
-
+	<%
+	String searchKey = request.getParameter("searchKey");
+	String searchPos = request.getParameter("searchPos");
+	User user = (User)request.getSession().getAttribute("user");
+	if (user != null)
+	{
+		String[] keywords = searchKey.split(" ");
+		Service ser = new Service();
+		ser.addUserSearchHistory(user.getUsername(), keywords, searchPos);		
+	}
+	%>
 <div class="container">
 
 <div id="header">
