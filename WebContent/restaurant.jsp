@@ -26,6 +26,17 @@
 		<script src="includes/js/respond.min.js"></script>
 		<script src="includes/js/bootstraps.min.js"></script>
 		<![endif]-->
+		<script type="text/javascript">
+		function favor(){
+			$.ajax({
+			type:"post",
+			url:"LikeServlet",
+			data:{
+				restaurantId:$("#restaurantId").val()
+			}
+			});
+		}
+		</script>
 	</head>
 	
 	<body>	
@@ -83,7 +94,7 @@
                     				<li><i class="glyphicon glyphicon-star"></i>  Category:</li>                  				
                         			<li><%=restObj.getCategories() %></li>
                     				<hr>
-                    				<li><button name="addFavor"class="btn btn-success" onClick=""><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
+                    				<li><button name="addFavor"class="btn btn-success" onClick="favor()"><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
                     				</li>           
                 				</ul>
 				                <div class="row text-center page-header">
