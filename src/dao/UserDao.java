@@ -42,6 +42,16 @@ public class UserDao {
 		return user;
 	}
 	
+	public void refresh(User user){
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		
+		em.refresh(user);
+		
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<User> findUserRegisteredBetween(Date startDate, Date endDate){
 		EntityManager em = factory.createEntityManager();

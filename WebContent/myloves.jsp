@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="entity.*, java.util.*, myutil.*, service.*"%>
+    pageEncoding="utf-8" import="entity.*,dao.*, java.util.*, myutil.*, service.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -30,6 +30,8 @@
 	<body>	
 		<%@include file="/part/navbar.jsp" %>
 		<%  User loginedUser = (User) request.getSession().getAttribute("user");
+			UserDao udao = new UserDao();
+			loginedUser = udao.findUserByPk(loginedUser.getUsername());
 				
 			if(loginedUser == null){
 				// won't work

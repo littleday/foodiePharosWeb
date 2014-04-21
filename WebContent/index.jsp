@@ -36,7 +36,7 @@
 			        <div class="col-lg-2"></div>
 				    <div class="col-lg-8">
 					    <form class="form-inline search" role="form" action="result.jsp">
-					        <div class="form-group" method="get">
+					        <div class="form-group">
 					            <input type="text" class="form-control" id="SearchKey" name="searchKey" placeholder="Search what you like">
 					            <input type="text" class="form-control" id="SearchPos" name="searchPos" placeholder="Where">
 					            <button type="submit" class="btn btn-theme">Search</button>
