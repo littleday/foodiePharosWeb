@@ -29,14 +29,24 @@
 		<%@include file="/part/navbar.jsp" %>
 	
 		<div id="header">
-			<div class="container">
-				<form class="form-signup" role="form" action="SignupServlet" method="post">
-					<h1 class="form-signup-heading">Please sign up</h1>
-					<input id="first_name" name="first_name" class="form-control" placeholder="First Name" type="fname" required autofocus/>
-					<input id="last_name" name="last_name" class="form-control" placeholder="Last Name" type="lname" required/>
-					<input type="email" name="signup_email" class="form-control" id="signup_email" placeholder="Email address" required/>
-					<input type="password" name="signup_pwd" class="form-control" id="signup_pwd" placeholder="Password" required/>
-					<button id="signup-button" type="submit" class="btn btn-primary btn-block">Sign up</button>
+			<div class="container" style="width: 30%;">
+				<form class="form-signup text-center" role="form" action="SignupServlet" method="post">
+					<h1 class="form-signup-heading" style="margin-top: 20px;">Please sign up</h1>
+                    <div class="form-group">					
+						<input id="first_name" name="first_name" class="form-control" placeholder="First Name" type="fname" required autofocus/>
+					</div>
+                    <div class="form-group">					
+						<input id="last_name" name="last_name" class="form-control" placeholder="Last Name" type="lname" required/>
+					</div>
+                    <div class="form-group">					
+						<input type="email" name="signup_email" class="form-control" id="signup_email" placeholder="Email address" required/>
+					</div>
+                    <div class="form-group">					
+						<input type="password" name="signup_pwd" class="form-control" id="signup_pwd" placeholder="Password" required/>
+					</div>
+                    <div class="form-group">					
+						<button id="signup-button" type="submit" class="btn btn-primary btn-block">Sign up</button>
+					</div>
 				</form>
 			</div>
 		</div>
