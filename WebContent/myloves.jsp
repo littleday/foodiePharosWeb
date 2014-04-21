@@ -86,7 +86,16 @@
 		      
 		         <% for(Restaurant rest: restaurants) { 
 		         		RestaurantTool restTool = new RestaurantTool(rest);
-		         		RestaurantObject restObj = restTool.getRestObj(); %>
+		         		RestaurantObject restObj = restTool.getRestObj();
+		    	    	if(request.getSession().getAttribute("favors") == null){
+		    				ArrayList<Long> favors = new ArrayList<Long>();
+		    				favors.add(rest.getId());
+		    				request.getSession().setAttribute("favors", favors);		    				
+		    			}else{
+		    				ArrayList<Long> favors = (ArrayList<Long>)request.getSession().getAttribute("favors");
+		    				favors.add(rest.getId());
+		    			}
+		         %>
 		         
 		        <div class="row">
 		        <div class ="col-xs-8">
@@ -98,6 +107,11 @@
 			           <p id="reviewContent" class="">
 				        	<%=restObj.snippet_text %>
 				       </p>
+				       <form action ="DislikeServlet" method="post">
+                       <li>
+                       <button name="dislike"class="btn btn-success btn-xs" value="<%=rest.getId() %>"><i class="glyphicon glyphicon-remove-circle"></i> Do not like it any more</button>       			
+                       </li> 
+                       </form>  
 		        </div>
 		         <div class ="col-xs-4">
 		         <br />
