@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.RestaurantDao;
+import entity.Restaurant;
 import entity.User;
 import service.Service;
+import myutil.AddResByYelp;
 
 
 @WebServlet("/ReviewServlet")
@@ -26,6 +29,16 @@ public class ReviewServlet extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("user");
 		Long restaurantId = (Long)request.getSession().getAttribute("restaurantId");
 		
+		if(restaurantId == 0)
+		{
+			String bizId = (String)request.getSession().getAttribute("bizId");
+			AddResByYelp ay = new AddResByYelp();
+			ay.addRestaurantByYelp(bizId);
+			RestaurantDao dao = new RestaurantDao();
+			Restaurant res = dao.findRestaurantByBusinessId(bizId);
+			restaurantId = res.getId();
+			
+		}
 		int star = Integer.parseInt(request.getParameter("newRating"));
 		String content = request.getParameter("reviewContent");
 		
