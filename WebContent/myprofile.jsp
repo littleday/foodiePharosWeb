@@ -89,7 +89,7 @@
 		         
 		        <div class="row">
 			       <div class="col-xs-8">
-			          <h6 id = "restId"><%=restObj.name %></h6>
+			          <h6 id = "restId"><a href="restaurant.jsp?id=<%=restObj.id %>"><%=restObj.name %></a></h6>
 			          <p class="">Category: <span id="categories"><%=restObj.getCategories() %></span></p>
 			       
 			       </div>
