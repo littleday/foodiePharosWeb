@@ -33,19 +33,24 @@
 		<%
 		String bizId = request.getParameter("id");
 		RestaurantDao dao = new RestaurantDao();
-		Restaurant res = dao.findRestaurantByBusinessId(bizId); 
-    	if (res == null)
+		Restaurant res = dao.findRestaurantByBusinessId(bizId);
+		if (res == null) res = new Restaurant();
+		res.setBusinessId(bizId);
+		RestaurantTool restTool = new RestaurantTool(res);
+		RestaurantObject restObj = restTool.getRestObj();
+		List<Review> reviews = res.getReviewList();
+		session.setAttribute("restaurantId", res.getId());
+		session.setAttribute("bizId", bizId);
+    	if (res.getCategory() == null)
 		{
 			// Add restaurant to database and search again
-			AddResByYelp ay = new AddResByYelp();
+			/* AddResByYelp ay = new AddResByYelp();
 			ay.addRestaurantByYelp(bizId);
-			res = dao.findRestaurantByBusinessId(bizId);
+			res = dao.findRestaurantByBusinessId(bizId); */
+    		res.setCategory(restObj.getCategoriesArray());
+    		res.setRating(restObj.rating);
+    		res.setRatingNumber(restObj.review_count);
 		} 
-			RestaurantTool restTool = new RestaurantTool(res);
-			RestaurantObject restObj = restTool.getRestObj();
-			List<Review> reviews = res.getReviewList();
-			session.setAttribute("restaurantId", res.getId());
-			session.setAttribute("bizId", bizId);
 		%>
         <div class="container">	
          <div id="header">
