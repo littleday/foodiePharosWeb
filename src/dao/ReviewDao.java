@@ -1,8 +1,14 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+
+
 
 
 import entity.Review;
@@ -27,6 +33,24 @@ public class ReviewDao {
 			em.close();
 		}
 		return returnVal;
+	}
+	
+	public List<Review> findAllReviews(){
+		EntityManager em = factory.createEntityManager();
+		List<Review> list = new ArrayList<Review>();
+
+		try {
+			em.getTransaction().begin();
+			
+			list = em.createQuery("select r from Review r").getResultList();
+			
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+		return list;
 	}
 	
 	
@@ -76,6 +100,13 @@ public class ReviewDao {
 			em.close();
 		}
 		return returnVal;
+	}
+	
+	public static void main(String[] args) {
+		ReviewDao dao = new ReviewDao();
+		for(Review r : dao.findAllReviews()){
+			System.out.println(r.getReview());
+		}
 	}
 
 }

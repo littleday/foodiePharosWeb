@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.RestaurantDao;
 import entity.Restaurant;
+import entity.Review;
 import entity.User;
 import service.Service;
 import myutil.AddResByYelp;
@@ -50,9 +52,22 @@ public class ReviewServlet extends HttpServlet {
 			request.setAttribute("failMessage", "Please login in before you add a review!");
 			request.getRequestDispatcher("fail.jsp").forward(request, response);
 		}else{
-			if(serv.addReview(user.getUsername(), restaurantId, star, content) == true)
+			
+			Review revw = serv.addReview(user.getUsername(), restaurantId, star, content);
+			if(revw != null)
 			{
 				//If add review successfully, return to the restaurant profile page
+				
+				if(request.getSession().getAttribute("reviews") == null){
+					ArrayList<Review> reviews = new ArrayList<Review>();
+					reviews.add(revw);
+					request.getSession().setAttribute("reviews", reviews);
+					
+				}else{
+					ArrayList<Review> reviews = (ArrayList<Review>)request.getSession().getAttribute("reviews");
+					reviews.add(revw);
+				}
+				
 				request.getRequestDispatcher("restaurant.jsp?id="+request.getSession().getAttribute("bizId")).forward(request, response);
 			}else
 			{

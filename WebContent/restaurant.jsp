@@ -39,6 +39,12 @@
 		RestaurantTool restTool = new RestaurantTool(res);
 		RestaurantObject restObj = restTool.getRestObj();
 		List<Review> reviews = res.getReviewList();
+		List<Review> myReviews = (List<Review>)request.getSession().getAttribute("reviews");
+		if(myReviews != null){
+			reviews.addAll(myReviews);
+		}
+		
+		
 		session.setAttribute("restaurantId", res.getId());
 		session.setAttribute("bizId", bizId);
     	if (res.getCategory() == null)
@@ -50,7 +56,7 @@
     		res.setCategory(restObj.getCategoriesArray());
     		res.setRating(restObj.rating);
     		res.setRatingNumber(restObj.review_count);
-		} 
+		}
 		%>
         <div class="container">	
          <div id="header">
@@ -137,7 +143,7 @@
 					                          </div>
 					                          <div class="col-sm-2">
 					                          	<h4><span class="label label-default"><%=review.getUser().getFirstName() %></span></h4>
-					                          	<a href="#" class="pull-right"><img src=<%=review.getUser().getPhoto() %> class="img-circle"></a>
+					                          	<a href="#" class="pull-right"><img height="100" width="100"  src=<%=review.getUser().getPhoto() %> class="img-circle"></a>
 					                          </div> 
 					                        </div>    
 		 		                            <hr>

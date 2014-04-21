@@ -160,7 +160,7 @@ public class Service {
 	}
 	
 	//passed test, 3/24/2014
-	public Boolean addReview(String username, long restaurantId, int star, String review){
+	public Review addReview(String username, long restaurantId, int star, String review){
 		
 		EntityManager em = factory.createEntityManager();
 		
@@ -190,10 +190,10 @@ public class Service {
 			
 			em.getTransaction().commit();
 			em.close();
-			return true;
+			return newReview;
 			
 		}else{
-			return false;
+			return null;
 		}
 	}
 	
