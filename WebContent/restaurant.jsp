@@ -26,17 +26,6 @@
 		<script src="includes/js/respond.min.js"></script>
 		<script src="includes/js/bootstraps.min.js"></script>
 		<![endif]-->
-		<script type="text/javascript">
-		function favor(){
-			$.ajax({
-			type:"post",
-			url:"LikeServlet",
-			data:{
-				restaurantId:$("#restaurantId").val()
-			}
-			});
-		}
-		</script>
 	</head>
 	
 	<body>	
@@ -73,6 +62,36 @@
     		res.setRatingNumber(restObj.review_count);
 		}
 		%>
+		
+		<%
+		String AddStyle;
+		String AlreadyStyle;
+		int flag = 0;
+		
+		Object user = request.getSession().getAttribute("user");
+		if(res.getId() != 0 && user != null)
+		{
+		    List<Restaurant> favor = ((User)user).getFavoriteRestaurants();
+		    for(Restaurant loop : favor)
+		    {
+		    	if(res.getId() == loop.getId())
+		    	{
+		    		flag = 1;
+		    	}
+		    }
+		    
+		}
+		if(flag == 1)
+		{
+			AddStyle="hidden";
+			AlreadyStyle="visable";
+		}
+		else
+		{
+			AddStyle="visable";
+			AlreadyStyle="hidden";
+		}
+		%>
         <div class="container">	
          <div id="header">
 	  		<div class="container">
@@ -94,8 +113,12 @@
                     				<li><i class="glyphicon glyphicon-star"></i>  Category:</li>                  				
                         			<li><%=restObj.getCategories() %></li>
                     				<hr>
-                    				<li><button name="addFavor"class="btn btn-success" onClick="favor()"><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
-                    				</li>           
+                    				<form action ="LikeServlet" method="post">
+                    				<li>
+                    				<button name="addFavor"class="btn btn-success <%=AddStyle %>"><i class="glyphicon glyphicon-heart"></i> Add to your favorite list</button>
+                    				<button name="alreadyFavor"class="btn btn-success <%=AlreadyStyle %>"><i class="glyphicon glyphicon-heart" ></i> This is your favorite!</button>
+                    				</li> 
+                    				</form>          
                 				</ul>
 				                <div class="row text-center page-header">
 				                	<h4>Related 1</h4>

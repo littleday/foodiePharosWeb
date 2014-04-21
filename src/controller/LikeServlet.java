@@ -43,7 +43,10 @@ public class LikeServlet extends HttpServlet {
 			restaurantId = Long.parseLong(resId);
 		}
 	    Service ser = new Service();
-	    ser.userLikeRestaurant(user.getUsername(), restaurantId);
+	    if(ser.userLikeRestaurant(user.getUsername(), restaurantId))
+	    {
+	    	request.getRequestDispatcher("restaurant.jsp?id="+request.getSession().getAttribute("bizId")).forward(request, response);
+	    }
 		
 		
 	
