@@ -1,2 +1,8 @@
+/META-INF
+/controller
+/dao
+/entity
+/filter
 /myutil
+/service
 /test

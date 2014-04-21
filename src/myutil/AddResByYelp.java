@@ -9,7 +9,8 @@ public class AddResByYelp {
 	
 	public void addRestaurantByYelp(String businessId)
 	{
-		String bizId = "polcaris-coffee-boston";
+		//String bizId = "polcaris-coffee-boston";
+		String bizId = businessId;
 		Restaurant newRes = new Restaurant();
 		newRes.setBusinessId(bizId);
 		RestaurantTool newTool = new RestaurantTool(newRes);
