@@ -29,6 +29,13 @@ public class LikeServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User)request.getSession().getAttribute("user");
+		if(user == null)
+		{
+			request.setAttribute("failMessage", "Please login in before you like it!");
+			request.getRequestDispatcher("fail.jsp").forward(request, response);
+		}
+		else
+		{
 	    String resId = request.getParameter("restaurantId"); 
 	    Long restaurantId;
 		if(resId == null)
@@ -59,7 +66,7 @@ public class LikeServlet extends HttpServlet {
 	    	request.getRequestDispatcher("restaurant.jsp?id="+request.getSession().getAttribute("bizId")).forward(request, response);
 	    }
 		
-		
+		}
 	
 	}
 
