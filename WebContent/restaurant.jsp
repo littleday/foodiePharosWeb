@@ -69,6 +69,16 @@
 		int flag = 0;
 		
 		Object user = request.getSession().getAttribute("user");
+		List<Long> currentFavor = (List<Long>)request.getSession().getAttribute("favors");
+		if(currentFavor != null){
+			for(long tmp: currentFavor)
+			{
+				if(tmp == res.getId())
+				{
+					flag = 1;
+				}
+			}
+		}
 		if(res.getId() != 0 && user != null)
 		{
 		    List<Restaurant> favor = ((User)user).getFavoriteRestaurants();

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import myutil.AddResByYelp;
 import dao.RestaurantDao;
 import service.Service;
 import entity.Restaurant;
+import entity.Review;
 import entity.User;
 
 
@@ -45,6 +47,15 @@ public class LikeServlet extends HttpServlet {
 	    Service ser = new Service();
 	    if(ser.userLikeRestaurant(user.getUsername(), restaurantId))
 	    {
+	    	if(request.getSession().getAttribute("favors") == null){
+				ArrayList<Long> favors = new ArrayList<Long>();
+				favors.add(restaurantId);
+				request.getSession().setAttribute("favors", favors);
+				
+			}else{
+				ArrayList<Long> favors = (ArrayList<Long>)request.getSession().getAttribute("favors");
+				favors.add(restaurantId);
+			}
 	    	request.getRequestDispatcher("restaurant.jsp?id="+request.getSession().getAttribute("bizId")).forward(request, response);
 	    }
 		
