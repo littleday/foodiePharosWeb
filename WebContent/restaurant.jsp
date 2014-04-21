@@ -41,7 +41,11 @@
 		List<Review> reviews = res.getReviewList();
 		List<Review> myReviews = (List<Review>)request.getSession().getAttribute("reviews");
 		if(myReviews != null){
-			reviews.addAll(myReviews);
+			for(Review rv : myReviews){
+				if(rv.getRestaurant().getBusinessId().equals(bizId)){
+					reviews.add(rv);
+				}
+			}
 		}
 		
 		
