@@ -16,12 +16,22 @@ public class SearchByYelp {
 			return sr;		
 		}
 	
+	public SearchResult searchByLocation(String term, String location) {
+		
+		// call rest api
+		Gson gson = new Gson();
+		Yelp yelp = new Yelp();
+		sr = gson.fromJson(yelp.searchByLocation(term, location), SearchResult.class);
+		return sr;
+	}
+	
 	public static void main(String[] args) {
 		
 		SearchByYelp search = new SearchByYelp();
 		SearchResult sr = new SearchResult();
 		
-		sr = search.getRestaurantsByLocation("Boston", "2");
+		//sr = search.getRestaurantsByLocation("Boston", "2");
+		sr = search.searchByLocation("seafood", "Boston");
 		
 		System.out.println(sr.getTotal());
 		System.out.println("(" + sr.getRegion().getSpan().getLatitude_delta() + "," + sr.getRegion().getSpan().getLongitude_delta() + ")");

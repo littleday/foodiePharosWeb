@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="myutil.*, java.util.Iterator"%>
+    pageEncoding="utf-8" import="myutil.*, dao.SearchHistoryDao, entity.SearchHistory, java.util.Iterator"%>
 <!DOCTYPE html>
 <head>
 	<title>FoodiePharos: Find your appetites here!</title>
@@ -51,7 +51,6 @@
 										{
 											id++;
 											busi = it.next();
-											System.out.println(busi.getName());
 											%>
 											<tr>
 												<td><%= id %></td>
@@ -96,44 +95,44 @@
 				          <h3 class="rank-title"><i class="glyphicon glyphicon-heart"></i> The Restaurants you may like</h3>
 				          <table class="table">
 				                  <tbody>
-				                    <tr>
-				                      <td>1</td>
-				                      <td>Mark</td>
-				                    </tr>
-				                    <tr>
-				                      <td>2</td>
-				                      <td>Jacob</td>
-				                    </tr>
-				                    <tr>
-				                      <td>3</td>
-				                      <td>Larry</td>
-				                    </tr>
-				                      <td>4</td>
-				                      <td>Mark</td>
-				                    </tr>
-				                    <tr>
-				                      <td>5</td>
-				                      <td>Jacob</td>
-				                    </tr>
-				                    <tr>
-				                      <td height="27">6</td>
-				                      <td>Larry</td>
-				                    </tr>
-				                    <td>7</td>
-				                      <td>Mark</td>
-				                    </tr>
-				                    <tr>
-				                      <td>8</td>
-				                      <td>Jacob</td>
-				                    </tr>
-				                    <tr>
-				                      <td>9</td>
-				                      <td>Larry</td>
-				                    </tr>
-				                    <tr>
-				                      <td>10</td>
-				                      <td>Larry</td>
-				                    </tr>
+				                  	<%
+				            			if (request.getSession().getAttribute("user") == null){
+				            				%>
+											<tr>
+												<td>No Recommend Restaurant for Guest</td>
+											</tr>
+											<tr>
+												<td><a href="signup.jsp"><h5>Join Us!</h5></a></td>
+											</tr>
+											<%
+				            			}else{
+				            				User user = (User)request.getSession().getAttribute("user");
+					                  		SearchHistoryDao dao = new SearchHistoryDao();
+					                  		SearchHistory shistory = dao.findLastSearchHistory(user.getUsername());
+					                  		if (shistory == null){
+					                  			%>
+												<tr>
+													<td>No Recommend Restaurant</td>
+												</tr>
+												<%		                  			
+					                  		}else{
+												sr = search.searchByLocation(shistory.getItemKeywordsString(),"Boston");
+												it = sr.getBusinessList().iterator();
+												id = 0;
+												while(it.hasNext() && id<10)
+												{
+													id++;
+													busi = it.next();
+													%>
+													<tr>
+														<td><%= id %></td>
+														<td><a href="${pageContext.request.contextPath}/restaurant.jsp?id=<%= busi.getId() %>"><%= busi.getName() %></a></td>
+													</tr>
+													<%
+												}
+					                  		}											
+				            			}
+				                  	%>
 				                  </tbody>  
 				          </table>
 			          </div>   

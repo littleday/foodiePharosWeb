@@ -75,6 +75,14 @@ public class SearchHistory implements Serializable {
 	public String[] getItemKeywords() {
 		return this.itemKeywords;
 	}
+	public String getItemKeywordsString() {
+		String term = itemKeywords[0];
+		for(int i=1; i<itemKeywords.length; i++)
+		{
+			term += itemKeywords[i] + " ";
+		}
+		return term;
+	}
 
 	public void setItemKeywords(String[] itemKeywords) {
 		this.itemKeywords = itemKeywords;
