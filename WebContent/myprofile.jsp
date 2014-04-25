@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="entity.*, java.util.*, myutil.*"%>
+    pageEncoding="utf-8" import="entity.*,dao.*, java.util.*, myutil.*"%>
 <!DOCTYPE html>
 	<head>
 		<meta charset="utf-8">	
@@ -31,13 +31,16 @@
 		<%@include file="/part/navbar.jsp" %>
 		
 		<%  User loginedUser = (User) request.getSession().getAttribute("user");
+			UserDao udao = new UserDao();
+			loginedUser = udao.findUserByPk(loginedUser.getUsername());
 				
 			if(loginedUser == null){
 				// won't work
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			
-			List<Review> reviews = loginedUser.getReviewList();			
+			List<Review> reviews = loginedUser.getReviewList();		
+			System.out.println("Myprofile.jsp, how many reviews of use: " + reviews.size());
 		%>
 
 		<!-- Main -->
