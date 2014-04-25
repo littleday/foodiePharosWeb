@@ -147,7 +147,6 @@
 											busi = it.next();
 											if (!busi.getId().equalsIgnoreCase(restObj.getId())) {
 												number++;
-												System.out.println(restObj.getId() + "=?" + busi.getId());
 												%>
 												<hr>
 				                				<div class="row text-center">
@@ -206,8 +205,14 @@
 					                            <h4><small class="text-muted">Last Modified:<%=review.getLastModifyDate() %></small></h4>
 					                          </div>
 					                          <div class="col-sm-2">
-					                          	<h4><span class="label label-default"><%=review.getUser().getFirstName() %></span></h4>
-					                          	<a href="#" class="pull-right"><img height="100" width="100"  src=<%=review.getUser().getPhoto() %> class="img-circle"></a>
+					                          	<h4>
+					                          		<span class="label label-default">
+					                          			<a href="${pageContext.request.contextPath}/viewprofile.jsp?username=<%= review.getUser().getUsername() %>"><%=review.getUser().getFirstName() %></a>
+					                          		</span>
+				                          		</h4>
+					                          	<a href="${pageContext.request.contextPath}/viewprofile.jsp?username=<%= review.getUser().getUsername() %>" class="pull-right">
+					                          		<img height="100" width="100"  src=<%=review.getUser().getPhoto() %> class="img-circle">
+					                          	</a>
 					                          </div> 
 					                        </div>    
 		 		                            <hr>
