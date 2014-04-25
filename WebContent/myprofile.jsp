@@ -39,7 +39,7 @@
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			
-			List<Review> reviews = loginedUser.getReviewList();		
+			List<Review> reviews = (List<Review>)request.getSession().getAttribute("reviews");
 			System.out.println("Myprofile.jsp, how many reviews of use: " + reviews.size());
 		%>
 
