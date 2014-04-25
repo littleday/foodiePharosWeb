@@ -30,77 +30,78 @@
 	
 	<body>	
 		<%@include file="/part/navbar.jsp" %>
+		
 		<%
-		String bizId = request.getParameter("id");
-		RestaurantDao dao = new RestaurantDao();
-		Restaurant res = dao.findRestaurantByBusinessId(bizId);
-		if (res == null) res = new Restaurant();
-		res.setBusinessId(bizId);
-		RestaurantTool restTool = new RestaurantTool(res);
-		RestaurantObject restObj = restTool.getRestObj();
-		List<Review> reviews = res.getReviewList();
-		List<Review> myReviews = (List<Review>)request.getSession().getAttribute("reviews");
-		if(myReviews != null){
-			for(Review rv : myReviews){
-				if(rv.getRestaurant().getBusinessId().equals(bizId)){
-					reviews.add(rv);
+			String bizId = request.getParameter("id");
+			RestaurantDao dao = new RestaurantDao();
+			Restaurant res = dao.findRestaurantByBusinessId(bizId);
+			if (res == null) res = new Restaurant();
+			res.setBusinessId(bizId);
+			RestaurantTool restTool = new RestaurantTool(res);
+			RestaurantObject restObj = restTool.getRestObj();
+			List<Review> reviews = res.getReviewList();
+			List<Review> myReviews = (List<Review>)request.getSession().getAttribute("reviews");
+			if(myReviews != null){
+				for(Review rv : myReviews){
+					if(rv.getRestaurant().getBusinessId().equals(bizId)){
+						reviews.add(rv);
+					}
 				}
 			}
-		}
-		
-		
-		session.setAttribute("restaurantId", res.getId());
-		session.setAttribute("bizId", bizId);
-    	if (res.getCategory() == null)
-		{
-			// Add restaurant to database and search again
-			/* AddResByYelp ay = new AddResByYelp();
-			ay.addRestaurantByYelp(bizId);
-			res = dao.findRestaurantByBusinessId(bizId); */
-    		res.setCategory(restObj.getCategoriesArray());
-    		res.setRating(restObj.rating);
-    		res.setRatingNumber(restObj.review_count);
-		}
+			
+			
+			session.setAttribute("restaurantId", res.getId());
+			session.setAttribute("bizId", bizId);
+	    	if (res.getCategory() == null)
+			{
+				// Add restaurant to database and search again
+				/* AddResByYelp ay = new AddResByYelp();
+				ay.addRestaurantByYelp(bizId);
+				res = dao.findRestaurantByBusinessId(bizId); */
+	    		res.setCategory(restObj.getCategoriesArray());
+	    		res.setRating(restObj.rating);
+	    		res.setRatingNumber(restObj.review_count);
+			}
 		%>
 		
 		<%
-		String AddStyle;
-		String AlreadyStyle;
-		int flag = 0;
-		
-		Object user = request.getSession().getAttribute("user");
-		List<Long> currentFavor = (List<Long>)request.getSession().getAttribute("favors");
-		if(currentFavor != null){
-			for(long tmp: currentFavor)
-			{
-				if(tmp == res.getId())
+			String AddStyle;
+			String AlreadyStyle;
+			int flag = 0;
+			
+			Object user = request.getSession().getAttribute("user");
+			List<Long> currentFavor = (List<Long>)request.getSession().getAttribute("favors");
+			if(currentFavor != null){
+				for(long tmp: currentFavor)
 				{
-					flag = 1;
+					if(tmp == res.getId())
+					{
+						flag = 1;
+					}
 				}
 			}
-		}
-		if(res.getId() != 0 && user != null)
-		{
-		    List<Restaurant> favor = ((User)user).getFavoriteRestaurants();
-		    for(Restaurant loop : favor)
-		    {
-		    	if(res.getId() == loop.getId())
-		    	{
-		    		flag = 1;
-		    	}
-		    }
-		    
-		}
-		if(flag == 1)
-		{
-			AddStyle="hidden";
-			AlreadyStyle="visable";
-		}
-		else
-		{
-			AddStyle="visable";
-			AlreadyStyle="hidden";
-		}
+			if(res.getId() != 0 && user != null)
+			{
+			    List<Restaurant> favor = ((User)user).getFavoriteRestaurants();
+			    for(Restaurant loop : favor)
+			    {
+			    	if(res.getId() == loop.getId())
+			    	{
+			    		flag = 1;
+			    	}
+			    }
+			    
+			}
+			if(flag == 1)
+			{
+				AddStyle="hidden";
+				AlreadyStyle="visable";
+			}
+			else
+			{
+				AddStyle="visable";
+				AlreadyStyle="hidden";
+			}
 		%>
         <div class="container">	
          <div id="header">
@@ -108,8 +109,9 @@
            		<div class="wrapper">
     				<div class="box">
         				<div class="row" style="margin-top: -90px;">       
-				            <!-- sidebar -->
+				            <!-- side bar -->
 				            <div class="column col-sm-3" id="sidebar" style="margin-top: -25px;">
+				            	<!-- My Profile -->
                 				<ul class="nav">
 				                    <li class="active"><h1><%=restObj.name %></h1></li>
 				                    <li>
@@ -130,28 +132,42 @@
                     				</li> 
                     				</form>          
                 				</ul>
-				                <div class="row text-center page-header">
-				                	<h4>Related 1</h4>
-				                    <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
-				                </div>
-				                <div class="row text-center divider">
-				                	<h4>Related 2</h4>
-				                    <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
-				                </div>
-				                <div class="row text-center page-header">
-				                	<h4>Related 3</h4>
-				                    <a href="#"><img src="//placehold.it/100" class="img-circle"></a>
-				                </div>
+                				<!-- Related Restaurants -->
+                				<%
+										SearchByYelp search = new SearchByYelp();
+										SearchResult sr = new SearchResult();
+										
+										sr = search.searchByLocation(restObj.getName(), "Boston");
+										
+										Iterator<Business> it = sr.getBusinessList().iterator();
+										Business busi = new Business();
+										int number = 0;
+										while(it.hasNext() && number<3)
+										{
+											busi = it.next();
+											if (!busi.getId().equalsIgnoreCase(restObj.getId())) {
+												number++;
+												System.out.println(restObj.getId() + "=?" + busi.getId());
+												%>
+												<hr>
+				                				<div class="row text-center">
+				                					<h4><a href="${pageContext.request.contextPath}/restaurant.jsp?id=<%= busi.getId() %>"><%= busi.getName() %></a></h4>
+				                    				<a href="${pageContext.request.contextPath}/restaurant.jsp?id=<%= busi.getId() %>"><img src=<%= busi.getImage_url() %> class="img-circle"></a>
+				                				</div>
+				                				<%
+											}										
+										}
+									%>
             				</div>
-            				<!-- /sidebar -->
+            				<!-- /side bar -->
           
 				            <!-- main -->
 				            <div class="column col-sm-9" id="main">
 				                <div class="padding">
 				                    <div class="full col-sm-9">
 			                         	<div class="col-sm-12" id="addReview">  
-					                          <div class="page-header text-muted"><strong><i class="glyphicon glyphicon-star"></i> Add Your Review</strong>
-					                          </div>
+				                          	<div class="page-header text-muted"><strong><i class="glyphicon glyphicon-star"></i> Add Your Review</strong>
+				                          	</div>
 					                         <form  action="ReviewServlet" method="post">
 												<div class="row">
 								 					<div class="col-sm-2">			 						
@@ -199,19 +215,7 @@
 					                <%} %>
 					                        
 				                        </div>
-				                        <!-- one review end -->
-				                        <div class="row page-header text-center">
-							            	<ul class="pagination">
-											  <li><a href="#">&laquo;</a></li>
-											  <li><a href="#">1</a></li>
-											  <li><a href="#">2</a></li>
-											  <li><a href="#">3</a></li>
-											  <li><a href="#">4</a></li>
-											  <li><a href="#">5</a></li>
-											  <li><a href="#">&raquo;</a></li>
-											</ul>
-											<!-- click http://getbootstrap.com/components/ for more usage -->
-				                       	</div>                   
+				                        <!-- one review end -->                
 				                    </div><!-- /col-9 -->
 				                </div><!-- /padding -->
 				            </div>
@@ -221,7 +225,7 @@
 				</div>
           	</div>
           </div>
-          </div>
+        </div>
 
 		<div id="footer">
 		  <div class="container">
