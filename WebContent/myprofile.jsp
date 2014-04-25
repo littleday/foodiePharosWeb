@@ -39,7 +39,14 @@
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			
-			List<Review> reviews = loginedUser.getReviewList();		
+			List<Review> reviews = loginedUser.getReviewList();	
+				if(request.getSession().getAttribute("reviews") != null){
+					ArrayList<Review> newReviews = new ArrayList<Review>();
+					for (int i=0; i<newReviews.size();i++)
+					{
+						reviews.add(newReviews.get(i));
+					}		    				
+				}
 			System.out.println("Myprofile.jsp, how many reviews of use: " + reviews.size());
 		%>
 
@@ -88,7 +95,8 @@
 		         <hr class="">	      
 		         <% for(Review review: reviews) { 
 		         		RestaurantTool restTool = new RestaurantTool(review.getRestaurant());
-		         		RestaurantObject restObj = restTool.getRestObj(); %>
+		         		RestaurantObject restObj = restTool.getRestObj(); 
+		         		%>
 		         
 		        <div class="row">
 			       <div class="col-xs-8">

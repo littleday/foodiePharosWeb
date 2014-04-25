@@ -66,6 +66,7 @@ public class ReviewServlet extends HttpServlet {
 				}else{
 					ArrayList<Review> reviews = (ArrayList<Review>)request.getSession().getAttribute("reviews");
 					reviews.add(revw);
+					request.getSession().setAttribute("reviews", reviews);
 				}
 				
 				request.getRequestDispatcher("restaurant.jsp?id="+request.getSession().getAttribute("bizId")).forward(request, response);
