@@ -68,6 +68,7 @@ public class Yelp {
 				"http://api.yelp.com/v2/search");
 		request.addQuerystringParameter("term", term);
 		request.addQuerystringParameter("ll", latitude + "," + longitude);
+		request.addQuerystringParameter("category_filter", "food");
 		this.service.signRequest(this.accessToken, request);
 		Response response = request.send();
 		return response.getBody();
@@ -78,6 +79,7 @@ public class Yelp {
 				"http://api.yelp.com/v2/search");
 		request.addQuerystringParameter("term", term);
 		request.addQuerystringParameter("location", location);
+		request.addQuerystringParameter("category_filter", "food");
 		this.service.signRequest(this.accessToken, request);
 		Response response = request.send();
 		return response.getBody();
@@ -88,6 +90,7 @@ public class Yelp {
 				"http://api.yelp.com/v2/search");
 		request.addQuerystringParameter("sort", sort); //Sort mode: 0=Best matched (default), 1=Distance, 2=Highest Rated.
 		request.addQuerystringParameter("location", location);
+		request.addQuerystringParameter("category_filter", "food");
 		this.service.signRequest(this.accessToken, request);
 		Response response = request.send();
 		return response.getBody();

@@ -37,6 +37,14 @@ public class RestaurantObject{
 		return sb.toString();
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
 	public String[] getCategoriesArray(){
 		String[] categoriesArray = new String[categories.length];
 		for(int m =0; m<categories.length; m++){
