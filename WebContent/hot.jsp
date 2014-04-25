@@ -64,30 +64,6 @@
 			          </div>   
 		          </div>
 		          <div class="col-lg-3 col-md-3">
-			          <h3>Your Keywords</h3>
-			          <input name="tagsinput" id="tagsinput" class="tagsinput" value="Chinese,Spicy,Cake" style= "display: none">
-			          <div id="tagsinput_tagsinput" class="tagsinput" style="height: 100%;">
-				          <span class="tag">
-					          <span><strong>Chinese</strong></span>
-					          <a class="tagsinput-remove-link">
-					          </a>
-				          </span>
-	                      <span class="tag">
-					          <span><strong>Spicy</strong></span>
-					          <a class="tagsinput-remove-link">
-					          </a>
-				          </span>
-	                      <span class="tag">
-					          <span><strong>Cake</strong></span>
-					          <a class="tagsinput-remove-link">
-					          </a>
-				          </span>
-				          <div class="taginput-add-container" id="tagsinput_addTag">
-					          <div class="tagsinput-add">
-					          </div>
-					          <input id="tagsinput_tag" value data-default style=""color: rgb(102, 102, 102); width: 7px;">
-				          </div>
-			          </div>
 		          </div>
 		          <div class="col-lg-3 col-md-3">
 		          	<!-- Rank Lists -->
