@@ -5,7 +5,10 @@ public class LocationObject{
 	private String city;
 	public String[] display_address;
 	private String[] neighborhoods;
-	private String postal_code;
+	
+	// Some restaurant information provided by Yelp doesn't contain this attribute
+	private String postal_code="undefined"; 
+	
 	private String country_code;
 	private String[] address;
 	private String state_code;

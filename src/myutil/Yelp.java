@@ -107,19 +107,19 @@ public class Yelp {
 
 	// CLI
 	public static void main(String[] args) {
-//		// Update tokens here from Yelp developers site, Manage API access.
-//		String consumerKey = "eUqcTUF2LgdZGB-ZjHr85g";
-//		String consumerSecret = "HwFzz0zvumYvhlq-vgcu-vDLf8w";
-//		String token = "d9O9FMYi1UDeNhTX1BP87UP4Q82xEAKE";
-//		String tokenSecret = "c0KdpfZNXDcYu3lhhG6hMhq2hro";
-//
-//		Yelp yelp = new Yelp();
-//		String response = yelp.search("burritos", 30.361471, -87.164326);
-//		//String response2 = yelp.getBusiness("taco-bell-gulf-breeze");
-//		String response2 = yelp.getBusiness("RuCvHXtZKfkujxIWYpu1Gg");
-//		String response3 = yelp.searchByLocation("burritos", " Franccisco");
-//		String response4 = yelp.getRestaurantsByLocation("Boston", "2");
+		// Update tokens here from Yelp developers site, Manage API access.
+		String consumerKey = "eUqcTUF2LgdZGB-ZjHr85g";
+		String consumerSecret = "HwFzz0zvumYvhlq-vgcu-vDLf8w";
+		String token = "d9O9FMYi1UDeNhTX1BP87UP4Q82xEAKE";
+		String tokenSecret = "c0KdpfZNXDcYu3lhhG6hMhq2hro";
+
+		Yelp yelp = new Yelp();
+		String response = yelp.search("burritos", 30.361471, -87.164326);
+		//String response2 = yelp.getBusiness("taco-bell-gulf-breeze");
+		String response2 = yelp.getBusiness("light-my-fire-los-angeles");
+		String response3 = yelp.searchByLocation("burritos", " Franccisco");
+		String response4 = yelp.getRestaurantsByLocation("Boston", "2");
 		
-//		System.out.println(response4);
+		System.out.println(response2);
 	}
 }
