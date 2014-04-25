@@ -18,6 +18,7 @@ public class SignoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("myreviews");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
