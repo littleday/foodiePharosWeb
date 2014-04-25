@@ -39,8 +39,10 @@
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			List<Review> reviews = loginedUser.getReviewList();	
-				if(request.getSession().getAttribute("reviews") != null){
+			System.out.println("Myprofile.jsp, how many reviews of use: " + reviews.size());
+				if(request.getSession().getAttribute("myreviews") != null){
 					ArrayList<Review> newReviews = new ArrayList<Review>();
+					newReviews = (ArrayList<Review>)request.getSession().getAttribute("myreviews");
 					for (int i=0; i<newReviews.size();i++)
 					{
 						reviews.add(newReviews.get(i));
