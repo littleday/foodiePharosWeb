@@ -38,8 +38,6 @@
 				// won't work
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
-			
-<<<<<<< HEAD
 			List<Review> reviews = loginedUser.getReviewList();	
 				if(request.getSession().getAttribute("reviews") != null){
 					ArrayList<Review> newReviews = new ArrayList<Review>();
@@ -48,9 +46,6 @@
 						reviews.add(newReviews.get(i));
 					}		    				
 				}
-=======
-			List<Review> reviews = (List<Review>)request.getSession().getAttribute("reviews");
->>>>>>> FETCH_HEAD
 			System.out.println("Myprofile.jsp, how many reviews of use: " + reviews.size());
 		%>
 
