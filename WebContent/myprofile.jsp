@@ -29,6 +29,7 @@
 
 	<body>	
 		<%@include file="/part/navbar.jsp" %>
+		
 		<%  User loginedUser = (User) request.getSession().getAttribute("user");
 				
 			if(loginedUser == null){
@@ -36,17 +37,16 @@
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			
-			List<Review> reviews = loginedUser.getReviewList();
-			
+			List<Review> reviews = loginedUser.getReviewList();			
 		%>
-		
-		
+
 		<!-- Main -->
 		<div class="main">
 		  <div class="container">
 		    <div class="row">
 		      <div class="col-md-3">
-		        <!-- Left column --> <a href="#" class=""><strong><i class="glyphicon glyphicon-wrench"></i> My Profile</strong></a>
+		        <!-- Left column -->
+		        <a href="#" class=""><strong><i class="glyphicon glyphicon-user"></i> My Profile</strong></a>
 		        <hr class="">
 		        <div class="profile-box">
 		          <div class="profile-cover-image">
@@ -58,9 +58,14 @@
 		          <div class="profile-content">
 		            <h1 class=""><%=loginedUser.getFirstName()+ " "+ loginedUser.getLastName() %></h1>
 		            
-		            <p class=""><%=loginedUser.getEmail() %>
-		              <br class="">Gender: <%=loginedUser.getGender() %>
-		            </p>
+		            <p class=""><%=loginedUser.getEmail()%>
+		            	<%
+		    				String gender = "Not Set";
+		            		if (loginedUser.getGender() != null)
+		            			gender = loginedUser.getGender();
+	            		%>
+		              <br class="">Gender: <%= gender %>
+	               </p>
 		            <div class="socials"> <a href="#" class="">
 		              <i class="fa fa-dribbble"></i>
 		              </a>
@@ -74,15 +79,10 @@
 		            </div>
 		          </div>
 		        </div>
-		      </div>
-		     
-		     
-		     
+		      </div> 
 		      <div class="col-md-9">
-		         <a href="#" class=""><strong><i class="glyphicon glyphicon-dashboard"></i> Recent Reviews</strong></a> 
-		         <hr class="">
-		         
-		      
+		         <a href="#" class=""><strong><i class="glyphicon glyphicon-comment"></i> Recent Reviews</strong></a> 
+		         <hr class="">	      
 		         <% for(Review review: reviews) { 
 		         		RestaurantTool restTool = new RestaurantTool(review.getRestaurant());
 		         		RestaurantObject restObj = restTool.getRestObj(); %>
@@ -111,17 +111,10 @@
 		        </div>
 		        <hr class="">
 		         <% } %>
-				
 		      </div>
-		
-		      
-		      
-		      
-		      
 		    </div>
 		  </div>
-		</div>
-		<!-- /Main -->
+		</div><!-- /Main -->
 
 		<div id="footer">
 		  <div class="container">
@@ -145,8 +138,6 @@
 		<script src="includes/js/flatui-checkbox.js"></script>
 		<script src="includes/js/flatui-radio.js"></script>
 		<script src="includes/js/jquery.tagsinput.js"></script>
-		<script src="includes/js/jquery.placeholder.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     	<script src="includes/js/star-rating.js" type="text/javascript"></script>
 	   
 	 </body> 
